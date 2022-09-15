@@ -28,3 +28,51 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: class title, term, and building search
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - intent: class_term
+  - action: extract_class_term
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: class_builing
+  - action: extract_class_building
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: deny
+  - action: utter_goodbye
+
+- story: class campus search
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: class_campus
+  - action: extract_campus_title
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: deny
+  - action: utter_goodbye
+
+- story: class instructor and description search
+  - intent: greet
+  - action: utter_greet
+  - intent: class_instructor
+  - action: extract_instructor_term
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: questions
+  - action: utter_still_question
+  - intent: class_description
+  - action: extract_class_description
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: deny
+  - action: utter_goodbye
+

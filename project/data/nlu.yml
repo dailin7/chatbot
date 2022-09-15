@@ -48,6 +48,9 @@ nlu:
     - don't like that
     - no way
     - not really
+    - I don't have any questions
+    - I don't have questiona
+    - not
 
 - intent: mood_great
   examples: |
@@ -65,6 +68,21 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - okay
+    - That's all
+    - fine
+    - good
+    - Thanks
+    - Thank you
+
+- intent: questions
+  example: |
+    - another question
+    - i have another question
+    - i have questions
+    - question
+    - i have one question
+
 
 - intent: mood_unhappy
   examples: |

@@ -8,8 +8,8 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - questions
   - class_title
-<<<<<<< HEAD
   - class_term
   - class_building
   - class_campus
@@ -19,8 +19,6 @@ intents:
   - bus_stop
   - bus_direction
   
-=======
->>>>>>> 70468b7514b7a70dc2317e887f621251487b5df4
 
 responses:
   utter_greet:
@@ -35,6 +33,12 @@ responses:
 
   utter_happy:
   - text: "Great, carry on!"
+
+  utter_question:
+  - text: "Do you have another question?"
+
+  utter_still_question:
+  - text: "Okay! Please ask me~ "
 
   utter_goodbye:
   - text: "Bye"
