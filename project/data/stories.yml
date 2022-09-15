@@ -76,17 +76,29 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: bus delay
+- story: bus delay bus stop and bus direction
   steps: 
+  - intent: greet
+  - action: utter_greet
   - intent: bus_delayed
   - action: check_bus_delayed
-
-- story: bus stop
-  steps:
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: questions
+  - action: utter_still_question
   - intent: bus_stop
   - action: list_bus_stop
-
--story: bus direction
-  steps:
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: questions
   - intent: bus_direction
   - action: extract_bus_direction
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: deny
+  - action: utter_goodbye
+
+  
