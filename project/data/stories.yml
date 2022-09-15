@@ -28,3 +28,18 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: bus delay
+  steps: 
+  - intent: bus_delayed
+  - action: check_bus_delayed
+
+- story: bus stop
+  steps:
+  - intent: bus_stop
+  - action: list_bus_stop
+
+-story: bus direction
+  steps:
+  - intent: bus_direction
+  - action: extract_bus_direction
