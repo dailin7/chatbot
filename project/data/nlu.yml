@@ -89,3 +89,96 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: class_title
+  examples: |
+    - title of CSE 5914
+    - title of CSE 2421
+    - what is the title of CSE 1223?
+    - what is the topic of Math 2153?
+    - what does MATH 1151 teach?
+
+- intent: class_term  #academic program
+  examples: |
+    - term of CSE 5914
+    - term of Math 3345
+    - which term is CSE 1223 in?
+    - which semester is ECE 2020 in?
+    - semester of Engineering 1181?
+
+- intent: class_building
+  examples: |
+    - CSE 1224 takes in which building
+    - location of class BIOMEDE 2000
+    - building of DANCE 1101
+    - where is the class DANCE 2112?
+    - CSE 2501 building 
+    - FRENCH 2101.01 building 
+    - where does the CHEM 1100 take?
+
+- intent: class_campus
+  examples: |
+    - which campus is DANCE 1101 in?
+    - where CSE 3901?
+    - where does the CHEM 1100 take?
+    - campus of CHEM 1200
+    - campus RELSTDS 2370
+    - DEABLST 5191 campus
+
+- intent: class_description
+  examples: |
+    - what does CSE 3901 teach?
+    - what does Math 1150 mainly teach?
+    - what content does DANCE 1101 have?
+    - content of ESHESA 2570
+    - content of PUBHHBP 7520
+    - description of CSTW 3467S
+    - COMLDR 2193 description
+    - COMLDR 3330 content
+
+- intent: class_instructor
+  examples: |
+    - who teach WGSST 1110? 
+    - who is the instructor of WGSST 1110?
+    - teacher of WGSST 1110
+    - instructor of WGSST 1110
+    - Math 3345 instructor 
+    - CSE5914 teacher
+    - list of WGSST 1110 instructors
+    - list of WGSST 1110 teachers
+    - professor of DSABLST 5191
+    - DANCE 1101 professor
+
+
+- intent: bus_delayed
+  examples: |
+    - I'd like to check whether CLN delay.
+    - CLN delay?
+    - Campus Loop North delay?
+    - delay? 
+    - CLS delay?
+    - CABS delay?
+    - Does the bus delay?
+    - Does NE delay?
+    
+
+- intent: bus_stop
+  examples: |
+    - Where is the bus stop nearby?
+    - Where can I find a bus stop?
+    - Where is the nearest bus stop?
+    - Where can I take a bus?
+    - Bus stop?
+    - Bus stop
+    - busstop
+    - Where does the bus stop?
+    - What is the name of the bus stop?
+
+
+- intent: bus_direction
+  examples: |
+    - Where does the bus go?
+    - What is the bus' direction?
+    - What is the destination of CLN?
+    - Bus direction?
+    - 
