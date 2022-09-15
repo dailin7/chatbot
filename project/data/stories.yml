@@ -29,7 +29,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-<<<<<<< HEAD
 - story: class title, term, and building search
   steps:
   - intent: class_title
@@ -77,7 +76,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-=======
 - story: bus delay
   steps: 
   - intent: bus_delayed
@@ -92,4 +90,3 @@ stories:
   steps:
   - intent: bus_direction
   - action: extract_bus_direction
->>>>>>> c7c8511cba8038d00eabb6a8dc2aa893f75eeb78
