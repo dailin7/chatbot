@@ -8,6 +8,16 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - class_title
+  - class_term
+  - class_building
+  - class_campus
+  - class_description
+  - class_instructor
+  - bus_delayed
+  - bus_stop
+  - bus_direction
+  
 
 responses:
   utter_greet:
