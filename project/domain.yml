@@ -9,7 +9,6 @@ intents:
   - mood_unhappy
   - bot_challenge
   - class_title
-<<<<<<< HEAD
   - class_term
   - class_building
   - class_campus
@@ -19,9 +18,7 @@ intents:
   - bus_stop
   - bus_direction
   
-=======
->>>>>>> 70468b7514b7a70dc2317e887f621251487b5df4
-
+  
 responses:
   utter_greet:
   - text: "Hey! How are you?"
