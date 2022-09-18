@@ -1,11 +1,18 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from "react";
-import { BsFilterRight, BsSearch } from "react-icons/bs";
+import {
+  BsAwardFill,
+  BsFillBookFill,
+  BsFilterRight,
+  BsSearch,
+} from "react-icons/bs";
 
 import CustomSelect from "./CustomSelect";
 import Button from "./Button";
 
 import heroDivider from "../images/hero-divider.svg";
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
+import { FaGraduationCap } from "react-icons/fa";
+import FeaturedLink from "./FeaturedLink";
 
 const initialFormData = {
   searchTerm: "",
@@ -18,6 +25,7 @@ const initialFormData = {
 const Home = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
+  const [showResults, setShowResults] = useState(false);
 
   const searchClass = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -125,19 +133,67 @@ const Home = () => {
             </div>
           </form>
         </div>
-        <div className="relative w-[80%] z-10 bg-white mb-12 p-4 shadow-md min-h-[75vh]">
-          <p className="text-2xl font-bold mb-4">Search Results</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-            <div className="h-32 bg-slate-500">test</div>
-          </div>
+        <div className="relative w-[80%] z-10 bg-white mb-12 py-6 px-8 shadow-md">
+          {showResults ? (
+            <>
+              <p className="text-3xl font-bold mb-4">Search Results</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+                <div className="h-32 bg-gray-400">test</div>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="text-3xl font-bold mb-5">Popular Searches</p>
+              <div className="w-full flex flex-col md:flex-row gap-4">
+                <div className="w-full border-t-2 border-gray-200 pt-4">
+                  <div className="flex items-start justify-start gap-2">
+                    <BsFillBookFill className="text-xl mt-[6px] text-scarlet" />
+                    <p className="m-0 text-xl font-bold">General Education</p>
+                  </div>
+                  <div className="ml-8 mt-2 flex flex-col gap-2">
+                    <FeaturedLink text="All Gen-Eds" />
+                    <FeaturedLink text="Easy Classes" />
+                  </div>
+                </div>
+                <div className="w-full border-t-2 border-gray-200 pt-4">
+                  <div className="flex items-start justify-start gap-2">
+                    <FaGraduationCap className="text-2xl mt-[2px] text-scarlet" />
+                    <p className="m-0 text-xl font-bold">Level</p>
+                  </div>
+                  <div className="ml-8 mt-2 flex flex-col gap-2">
+                    <FeaturedLink text="Undergrad" />
+                    <FeaturedLink text="Grad" />
+                    <FeaturedLink text="Pharmacy" />
+                  </div>
+                </div>
+                <div className="w-full border-t-2 border-gray-200 pt-4">
+                  <div className="flex items-start justify-start gap-2">
+                    <BsAwardFill className="text-2xl mt-1 text-scarlet" />
+                    <p className="m-0 text-xl font-bold">Majors</p>
+                  </div>
+                  <div className="ml-8 mt-2 flex flex-col gap-2">
+                    <FeaturedLink text="Finance" />
+                    <FeaturedLink text="Biology" />
+                    <FeaturedLink text="Psychology" />
+                    <FeaturedLink text="Computer Science & Engineering" />
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+          <button
+            className="bg-green-500 rounded-sm p-1 border-2 mt-64"
+            onClick={() => setShowResults(!showResults)}
+          >
+            Toggle Show Search Results (remove when no longer needed)
+          </button>
         </div>
       </div>
     </div>
