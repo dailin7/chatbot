@@ -168,8 +168,8 @@ const Home = () => {
                     <p className="m-0 text-xl font-bold">Level</p>
                   </div>
                   <div className="ml-8 mt-2 flex flex-col gap-2">
-                    <FeaturedLink text="Undergrad" />
-                    <FeaturedLink text="Grad" />
+                    <FeaturedLink text="Undergraduate" />
+                    <FeaturedLink text="Graduate" />
                     <FeaturedLink text="Pharmacy" />
                   </div>
                 </div>
@@ -182,7 +182,7 @@ const Home = () => {
                     <FeaturedLink text="Finance" />
                     <FeaturedLink text="Biology" />
                     <FeaturedLink text="Psychology" />
-                    <FeaturedLink text="Computer Science & Engineering" />
+                    <FeaturedLink text="CSE" />
                   </div>
                 </div>
               </div>
