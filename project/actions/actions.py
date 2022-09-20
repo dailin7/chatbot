@@ -26,7 +26,7 @@ class FetchProfileAction(Action):
         url = "https://content.osu.edu/v2/classes/search?q=" + class_name
         data = requests.get(url).json
         # find "shortDescription tuple"
-        return []
+        return [SlotSet("course_title", data["ShortDescription"])]
     
     
 
