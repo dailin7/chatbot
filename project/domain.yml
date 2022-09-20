@@ -84,7 +84,19 @@ slots:
   
   course_title:
     type: text
-    initial_value: ""
+    initial_value: "Capstone Design: Knowledge-Based Systems"
+
+  course_term:
+    type: text
+    initial_value: "Autumn 2022"
+
+  course_building:
+    type: text
+    initial_value: "Journalism Bldg 304"
+
+  course_campus:
+    type: text
+    initial_value: "Columbus"
 
 entities:
   - class
