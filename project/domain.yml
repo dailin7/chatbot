@@ -19,11 +19,7 @@ intents:
   - bus_stop
   - bus_direction
   
-<<<<<<< HEAD
-
-=======
   
->>>>>>> c7c8511cba8038d00eabb6a8dc2aa893f75eeb78
 responses:
   utter_greet:
   - text: "Hey! How are you?"
@@ -80,3 +76,8 @@ responses:
 session_config:
   session_expiration_time: 200
   carry_over_slots_to_new_session: true
+
+slots:
+  class:
+    type: text
+    initial_value: "CSE5914"
