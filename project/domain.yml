@@ -19,6 +19,7 @@ intents:
   - bus_stop
   - bus_direction
   
+  
 responses:
   utter_greet:
   - text: "Hey! How are you?"
@@ -75,3 +76,25 @@ responses:
 session_config:
   session_expiration_time: 200
   carry_over_slots_to_new_session: true
+
+slots:
+  class:
+    type: text
+    initial_value: "CSE5914"
+  
+  course_title:
+    type: text
+    initial_value: ""
+
+entities:
+  - class
+  - course_title
+  - course_term
+  - course_building
+  - course_campus
+  - course_description
+  - course_instructor
+  - course_prerequire
+  - delay_boolean
+  - stop_list
+  - bus_destination
