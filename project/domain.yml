@@ -85,14 +85,37 @@ slots:
   course_title:
     type: text
     initial_value: ""
+  
+  course_description:
+    type: text
+    initial_value: "TBA"
+  
+  course_instructor:
+    type: text
+    initial_value: "TBA"
+  
+  courese_prerequire:
+    type: list
+  
+  delay_boolean:
+    type: boolean
+    initial_value: false
+  
+  stop_list:
+    type: list
+  
+  bus_destination:
+    type: text
+    initial_value: ""
+
 
 entities:
   - class
   - course_title
   - course_term
-  - course_building
+  - course_building #use building description in API
   - course_campus
-  - course_description
+  - course_description #use (long)description in API
   - course_instructor
   - course_prerequire
   - delay_boolean
