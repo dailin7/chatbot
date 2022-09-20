@@ -97,19 +97,20 @@ slots:
   course_campus:
     type: text
     initial_value: "Columbus"
-    
-      
+
+
   course_description:
     type: text
-    initial_value: "TBA"
+    initial_value: "Capstone design project; conceptual and technical design; theory and practice of knowledge-based systems; teamwork, written and oral communication skills.\nPrereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing."
   
   course_instructor:
     type: text
-    initial_value: "TBA"
-  
-  courese_prerequire:
-    type: list
-  
+    initial_value: "Stanley J Vernier"
+
+  course_instructionMode:
+    type: text
+    initial_value: "In Person"
+
   delay_boolean:
     type: boolean
     initial_value: false
@@ -130,7 +131,7 @@ entities:
   - course_campus
   - course_description #use (long)description in API
   - course_instructor
-  - course_prerequire
+  - course_instructionMode
   - delay_boolean
   - stop_list
   - bus_destination
