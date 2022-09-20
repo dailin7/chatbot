@@ -81,3 +81,20 @@ slots:
   class:
     type: text
     initial_value: "CSE5914"
+  
+  course_title:
+    type: text
+    initial_value: ""
+
+entities:
+  - class
+  - course_title
+  - course_term
+  - course_building
+  - course_campus
+  - course_description
+  - course_instructor
+  - course_prerequire
+  - delay_boolean
+  - stop_list
+  - bus_destination
