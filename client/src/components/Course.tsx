@@ -1,17 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const Course = () => {
+interface IProps{
+  ID:string
+  name:string
+  number:string
+  time:string
+  location: string
+}
+const Course = ({ID,name, number,time, location}:IProps) => {
   return (
-    <div className="bg-slate-200  w-[40%] mx-auto ">
+    <div className="bg-slate-200  w-[80%] mx-auto ">
      <div className="	box-sizing: border-box w-[90%] mx-auto flex justify-between items-center">
       <Link to="/courseInfo">
-        <h1 className="text-4xl">Course Number</h1>
+        <h1 className="text-4xl">Course Number:{ID}</h1>
         <ul className="text-1xl">
-        <li>Professor Name:</li>
-        <li>Section Number:</li>
-        <li>Time:</li>
-        <li>Location:</li>
+        <li>ProfessorName:{name}</li>
+        <li>Section Number:{number}</li>
+        <li>Time:{time}</li>
+        <li>Location:{location}</li>
         </ul>
         </Link>
 
