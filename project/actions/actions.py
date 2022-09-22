@@ -10,6 +10,7 @@
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 import requests
+import json
 
 class FetchProfileAction(Action):
 
@@ -24,10 +25,10 @@ class FetchProfileAction(Action):
     def extract_class_title(self, dispatcher, tracker, domain):
         class_name = tracker.get_slot('class')
         url = "https://content.osu.edu/v2/classes/search?q=" + class_name
+        print(url)
         data = requests.get(url).json()
-        # find "shortDescription tuple"
-        return [SlotSet("course_title", data["ShortDescription"])]
-
+        outout = data['data']['courses'][0]["course"]["shortDescription"]
+        return  outout
     
 
 
