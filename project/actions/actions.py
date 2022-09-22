@@ -24,10 +24,10 @@ class FetchProfileAction(Action):
     def extract_class_title(self, dispatcher, tracker, domain):
         class_name = tracker.get_slot('class')
         url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        data = requests.get(url).json
+        data = requests.get(url).json()
         # find "shortDescription tuple"
         return [SlotSet("course_title", data["ShortDescription"])]
-    
+
     
 
 
