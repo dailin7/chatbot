@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Course/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bus" element={<Busses />} />

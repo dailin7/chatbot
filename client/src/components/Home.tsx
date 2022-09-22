@@ -1,3 +1,4 @@
+import Course from "./Course";
 import { TextField } from "@mui/material";
 import React, { ChangeEvent, SyntheticEvent, useState } from "react";
 import { BsFilterRight, BsSearch } from "react-icons/bs";
@@ -49,17 +50,18 @@ const Home = () => {
             <div className="flex justify-center items-center"></div>
           </div>
         </form>
-        <div className="w-[80%] grid grid-cols-4 gap-4">
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-          <div className="h-12 bg-black">test</div>
-        </div>
+        <div className="w-[90%] grid grid-cols-4 gap-4">
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+      <Course ID="CSE3341" name="Wayne Heym" number="1111" time="12:40-1:35" location="Caldwell lab 117"/>
+       
+      </div>
       </div>
     </div>
   );

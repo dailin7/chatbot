@@ -14,7 +14,7 @@ const Course = ({ID,name, number,time, location}:IProps) => {
       <Link to="/courseInfo">
         <h1 className="text-4xl">Course Number:{ID}</h1>
         <ul className="text-1xl">
-        <li>ProfessorName:{name}</li>
+        <li>Professor Name:{name}</li>
         <li>Section Number:{number}</li>
         <li>Time:{time}</li>
         <li>Location:{location}</li>
