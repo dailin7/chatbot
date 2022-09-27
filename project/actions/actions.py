@@ -27,8 +27,34 @@ class FetchProfileAction(Action):
         url = "https://content.osu.edu/v2/classes/search?q=" + class_name
         print(url)
         data = requests.get(url).json()
+<<<<<<< HEAD
         output = data['data']['courses'][0]["course"]["shortDescription"]
         return  [SlotSet("course_title", output)]
+=======
+        outout = data['data']['courses'][0]["course"]["shortDescription"]
+        return  outout
+
+    def extract_class_term(self, dispatcher, tracker, domain):
+        class_name = tracker.get_slot('class')
+        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
+        data = requests.get(url).json()
+        outout = data['data']['courses'][0]["course"]["term"]
+        return  outout
+
+    def extract_class_building(self, dispatcher, tracker, domain):
+        class_name = tracker.get_slot('class')
+        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
+        data = requests.get(url).json()
+        outout = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
+        return  outout
+
+    def extract_class_campus(self, dispatcher, tracker, domain):
+        class_name = tracker.get_slot('class')
+        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
+        data = requests.get(url).json()
+        outout = data['data']['courses'][0]['sections'][0]['campus']
+        return  outout
+>>>>>>> 299ce8a2d1908989d26d0ebbbedd1e03f56dcb29
     
     def extract_class_instructor(self, dispatcher, tracker, domain):
         class_name = tracker.get_slot('class')

@@ -9,7 +9,7 @@ interface IProps{
 }
 const Course = ({ID,name, number,time, location}:IProps) => {
   return (
-    <div className="bg-slate-200  w-[80%] mx-auto ">
+    <div className="bg-slate-200  w-full mx-auto ">
      <div className="	box-sizing: border-box w-[90%] mx-auto flex justify-between items-center">
       <Link to="/courseInfo">
         <h1 className="text-4xl">Course Number:{ID}</h1>
