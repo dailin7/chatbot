@@ -8,8 +8,7 @@ import Course from "./components/Course";
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <Course/>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bus" element={<Busses />} />
