@@ -7,7 +7,6 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-import re
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 import requests
