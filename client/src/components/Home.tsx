@@ -5,14 +5,14 @@ import {
   BsFilterRight,
   BsSearch,
 } from "react-icons/bs";
+import { FaGraduationCap } from "react-icons/fa";
 
-import CustomSelect from "./CustomSelect";
 import Button from "./Button";
+import CustomSelect from "./CustomSelect";
+import FeaturedLink from "./FeaturedLink";
 
 import heroDivider from "../images/hero-divider.svg";
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
-import { FaGraduationCap } from "react-icons/fa";
-import FeaturedLink from "./FeaturedLink";
 
 const initialFormData = {
   searchTerm: "",
