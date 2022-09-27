@@ -7,6 +7,8 @@ We use Conda as our environment manager for python:
    
 2. Start the chatbot server by switching to the `project` folder and running `
 
-3. Start the client server by switching to the `client` folder and running `npm start`
+3. Install client dependencies by switching to the `client` folder and running `npm install`
+
+4. Start the client server with `npm start`
 
 show an example of how our app stops some malicious attack
