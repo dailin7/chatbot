@@ -13,6 +13,9 @@
 #action_endpoint:
 #  url: "http://localhost:5055/webhook"
 
+#extract_class_title:
+#  url: "https://content.osu.edu/v2/classes/search?q=" + class
+
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
 # https://rasa.com/docs/rasa/tracker-stores

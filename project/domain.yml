@@ -21,6 +21,7 @@ intents:
   
   
 responses:
+
   utter_greet:
   - text: "Hey! How are you?"
 
@@ -47,31 +48,31 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   extract_class_title:
-  - url: "https://content.osu.edu/v2/classes/search?q=CSE5914" #just sample url
+  - text: "The course title of {class} is {course_title}."
 
-  extract_class_term:
-  - url: "https://content.osu.edu/v2/classes/search?q=CSE5914" #just sample url
+  #extract_class_term:
+  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914"
 
-   extract_class_building:
-  - url: "https://content.osu.edu/v2/classes/search?q=CSE5914" #just sample url
+  #extract_class_building:
+  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914"
 
-   extract_class_campus:
-  - url: "https://content.osu.edu/v2/classes/search?q=CSE5914" #just sample url
+  #extract_class_campus:
+  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
 
-   extract_class_description:
-  - url: "https://content.osu.edu/v2/classes/search?q=CSE5914" #just sample url
+  #extract_class_description:
+  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
 
-   extract_class_instructor:
-  - url: "https://content.osu.edu/v2/classes/search?q=CSE5914" #just sample url
+  #extract_class_instructor:
+  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
 
-  check_bus_delayed:
-  - url: ""
+  #check_bus_delayed:
+  #- url: ""
 
-  list_bus_stop:
-  - url: ""
+  #list_bus_stop:
+  #- url: ""
 
-  extract_bus_direction:
-  - url: ""
+  #extract_bus_direction:
+  #- url: ""
 
 session_config:
   session_expiration_time: 200
@@ -81,46 +82,79 @@ slots:
   class:
     type: text
     initial_value: "CSE5914"
+    mappings:
+    - type: from_entity
+      entity: class
   
   course_title:
     type: text
     initial_value: "Capstone Design: Knowledge-Based Systems"
+    mappings:
+    - type: from_entity
+      entity: course_title
 
   course_term:
     type: text
     initial_value: "Autumn 2022"
+    mappings:
+    - type: from_entity
+      entity: course_term
 
   course_building:
     type: text
     initial_value: "Journalism Bldg 304"
+    mappings:
+    - type: from_entity
+      entity: course_building
 
   course_campus:
     type: text
     initial_value: "Columbus"
+    mappings:
+    - type: from_entity
+      entity: course_campus
 
 
   course_description:
     type: text
     initial_value: "Capstone design project; conceptual and technical design; theory and practice of knowledge-based systems; teamwork, written and oral communication skills.\nPrereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing."
+    mappings:
+    - type: from_entity
+      entity: course_description
   
   course_instructor:
     type: text
     initial_value: "Stanley J Vernier"
+    mappings:
+    - type: from_entity
+      entity: course_instructor
 
   course_instructionMode:
     type: text
     initial_value: "In Person"
+    mappings:
+    - type: from_entity
+      entity: course_instructionMode
 
   delay_boolean:
-    type: boolean
+    type: text
     initial_value: false
+    mappings:
+    - type: from_entity
+      entity: delay_boolean
   
   stop_list:
     type: list
+    mappings:
+    - type: from_entity
+      entity: stop_list
   
   bus_destination:
     type: text
     initial_value: ""
+    mappings:
+    - type: from_entity
+      entity: bus_destination
 
 
 entities:

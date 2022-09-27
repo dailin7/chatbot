@@ -27,8 +27,8 @@ class FetchProfileAction(Action):
         url = "https://content.osu.edu/v2/classes/search?q=" + class_name
         print(url)
         data = requests.get(url).json()
-        outout = data['data']['courses'][0]["course"]["shortDescription"]
-        return  outout
+        output = data['data']['courses'][0]["course"]["shortDescription"]
+        return  [SlotSet("course_title", output)]
     
     def extract_class_instructor(self, dispatcher, tracker, domain):
         class_name = tracker.get_slot('class')
