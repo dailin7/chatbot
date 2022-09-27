@@ -52,6 +52,13 @@ class FetchProfileAction(Action):
         outout = data['data']['courses'][0]['sections'][0]['campus']
         return  outout
     
+    def extract_class_instructor(self, dispatcher, tracker, domain):
+        class_name = tracker.get_slot('class')
+        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
+        print(url)
+        data = requests.get(url).json()
+        output = data['data']['courses'][0]["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
+        return  output
 
 
 # from typing import Any, Text, Dict, List
