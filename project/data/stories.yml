@@ -38,7 +38,7 @@ stories:
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
-  - intent: class_builing
+  - intent: course_building
   - action: extract_class_building
   - intent: mood_great
   - action: utter_happy
@@ -51,7 +51,7 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: class_campus
-  - action: extract_campus_title
+  - action: extract_class_campus
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
@@ -59,46 +59,47 @@ stories:
   - action: utter_goodbye
 
 - story: class instructor and description search
+  steps:
   - intent: greet
   - action: utter_greet
   - intent: class_instructor
-  - action: extract_instructor_term
+  - action: extract_class_instructor
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
   - intent: questions
   - action: utter_still_question
-  - intent: class_description
-  - action: extract_class_description
+  # - intent: class_description
+  # - action: extract_class_description
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
   - intent: deny
   - action: utter_goodbye
 
-- story: bus delay bus stop and bus direction
-  steps: 
-  - intent: greet
-  - action: utter_greet
-  - intent: bus_delayed
-  - action: check_bus_delayed
-  - intent: mood_great
-  - action: utter_happy
-  - action: utter_question
-  - intent: questions
-  - action: utter_still_question
-  - intent: bus_stop
-  - action: list_bus_stop
-  - intent: mood_great
-  - action: utter_happy
-  - action: utter_question
-  - intent: questions
-  - intent: bus_direction
-  - action: extract_bus_direction
-  - intent: mood_great
-  - action: utter_happy
-  - action: utter_question
-  - intent: deny
-  - action: utter_goodbye
+# - story: bus delay bus stop and bus direction
+#   steps: 
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: bus_delayed
+#   - action: check_bus_delayed
+#   - intent: mood_great
+#   - action: utter_happy
+#   - action: utter_question
+#   - intent: questions
+#   - action: utter_still_question
+#   - intent: bus_stop
+#   - action: list_bus_stop
+#   - intent: mood_great
+#   - action: utter_happy
+#   - action: utter_question
+#   - intent: questions
+#   - intent: bus_direction
+#   - action: extract_bus_direction
+#   - intent: mood_great
+#   - action: utter_happy
+#   - action: utter_question
+#   - intent: deny
+#   - action: utter_goodbye
 
   

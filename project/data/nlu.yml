@@ -76,7 +76,7 @@ nlu:
     - Thank you
 
 - intent: questions
-  example: |
+  examples: |
     - another question
     - i have another question
     - i have questions
@@ -168,38 +168,38 @@ nlu:
     - DANCE 1101 professor
 
 
-- intent: bus_delayed
-  examples: |
-    - I'd like to check whether CLN delay.
-    - CLN delay?
-    - Campus Loop North delay?
-    - delay? 
-    - CLS delay?
-    - CABS delay?
-    - Does the bus delay?
-    - Does NE delay?
+# - intent: bus_delayed
+#   examples: |
+#     - I'd like to check whether CLN delay.
+#     - CLN delay?
+#     - Campus Loop North delay?
+#     - delay? 
+#     - CLS delay?
+#     - CABS delay?
+#     - Does the bus delay?
+#     - Does NE delay?
     
 
-- intent: bus_stop
-  examples: |
-    - Where is the bus stop nearby?
-    - Where can I find a bus stop?
-    - Where is the nearest bus stop?
-    - Where can I take a bus?
-    - Bus stop?
-    - Bus stop
-    - busstop
-    - Where does the bus stop?
-    - What is the name of the bus stop?
+# - intent: bus_stop
+#   examples: |
+#     - Where is the bus stop nearby?
+#     - Where can I find a bus stop?
+#     - Where is the nearest bus stop?
+#     - Where can I take a bus?
+#     - Bus stop?
+#     - Bus stop
+#     - busstop
+#     - Where does the bus stop?
+#     - What is the name of the bus stop?
 
 
-- intent: bus_direction
-  examples: |
-    - Where does the bus go?
-    - What is the bus' direction?
-    - What is the destination of CLN?
-    - Bus direction?
-    - CLN direction
-    - CLN destination
-    - Where does BV go?
+# - intent: bus_direction
+#   examples: |
+#     - Where does the bus go?
+#     - What is the bus' direction?
+#     - What is the destination of CLN?
+#     - Bus direction?
+#     - CLN direction
+#     - CLN destination
+#     - Where does BV go?
 

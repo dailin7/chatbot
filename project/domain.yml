@@ -50,20 +50,25 @@ responses:
   extract_class_title:
   - text: "The course title of {class} is {course_title}."
 
-  #extract_class_term:
-  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914"
+  extract_class_instructor:
+  - text: "The course instructor of {class} is {course_instructor}."
 
-  #extract_class_building:
-  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914"
+  extract_class_term:
+  - text: "The course term of {class} is {course_term}."
 
-  #extract_class_campus:
-  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
+  extract_class_building:
+  - text: "The course building of {class} is {course_building}."
+
+  extract_class_campus:
+  - text: "The course campus of {class} is {course_campus}."
+
+
+
 
   #extract_class_description:
   #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
 
-  #extract_class_instructor:
-  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
+
 
   #check_bus_delayed:
   #- url: ""
@@ -136,25 +141,25 @@ slots:
     - type: from_entity
       entity: course_instructionMode
 
-  delay_boolean:
-    type: text
-    initial_value: false
-    mappings:
-    - type: from_entity
-      entity: delay_boolean
+  # delay_boolean:
+  #   type: text
+  #   initial_value: false
+  #   mappings:
+  #   - type: from_entity
+  #     entity: delay_boolean
   
-  stop_list:
-    type: list
-    mappings:
-    - type: from_entity
-      entity: stop_list
+  # stop_list:
+  #   type: list
+  #   mappings:
+  #   - type: from_entity
+  #     entity: stop_list
   
-  bus_destination:
-    type: text
-    initial_value: ""
-    mappings:
-    - type: from_entity
-      entity: bus_destination
+  # bus_destination:
+  #   type: text
+  #   initial_value: ""
+  #   mappings:
+  #   - type: from_entity
+  #     entity: bus_destination
 
 
 entities:
@@ -166,6 +171,6 @@ entities:
   - course_description #use (long)description in API
   - course_instructor
   - course_instructionMode
-  - delay_boolean
-  - stop_list
-  - bus_destination
+  # - delay_boolean
+  # - stop_list
+  # - bus_destination
