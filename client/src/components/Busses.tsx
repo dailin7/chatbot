@@ -81,7 +81,7 @@ const Busses = () => {
         component="img"
         sx={{
           // height: 233,
-          width: 1/1,
+          width: 1/3,
           // maxHeight: { xs: 233, md: 167 },
           // maxWidth: { xs: 350, md: 250 },
         }}
