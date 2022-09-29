@@ -38,7 +38,7 @@ stories:
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
-  - intent: course_building
+  - intent: class_building
   - action: extract_class_building
   - intent: mood_great
   - action: utter_happy
