@@ -16,9 +16,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import bus_map from "/Users/dailin/Desktop/chatbot/client/src/images/cabs-system-map.jpg";
-import reg_bus from "/Users/dailin/Desktop/chatbot/client/src/images/cabs-banner.jpeg";
-import demand_bus from "/Users/dailin/Desktop/chatbot/client/src/images/on-demand-bus.jpeg";
+import bus_map from "../images/cabs-system-map.jpg";
+import reg_bus from "../images/cabs-banner.jpeg";
+import demand_bus from "../images/on-demand-bus.jpeg";
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
