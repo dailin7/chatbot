@@ -14,6 +14,7 @@ import FeaturedLink from "./FeaturedLink";
 import heroDivider from "../images/hero-divider.svg";
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import Course from "./Course";
+import Avatar from "./Avatar";
 
 const initialFormData = {
   searchTerm: "",
@@ -34,6 +35,7 @@ const Home = () => {
   };
 
   return (
+    
     <div className="w-full mx-auto">
       <div className="w-full flex flex-col items-center">
         <div className="relative w-full flex flex-col justify-center items-center gap-12 pt-16 pb-8 -mb-4 sm:mb-0 bg-scarlet min-h-[250px]">
@@ -134,6 +136,7 @@ const Home = () => {
             </div>
           </form>
         </div>
+        
         <div className="relative w-[80%] z-10 bg-white mb-12 py-6 px-8 shadow-md">
           {showResults ? (
             <>
@@ -252,7 +255,12 @@ const Home = () => {
           </button>
         </div>
       </div>
+       <div className="flex flex-col absolute bottom-0 right-0 ">
+        <Avatar/>
+        </div>
     </div>
+    
+    
   );
 };
 
