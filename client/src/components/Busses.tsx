@@ -14,6 +14,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import bus_map from "/Users/dailin/Desktop/chatbot/client/src/images/cabs-system-map.jpg";
 import reg_bus from "/Users/dailin/Desktop/chatbot/client/src/images/cabs-banner.jpeg";
@@ -84,11 +85,13 @@ const Busses = () => {
           width: 1/3,
           // maxHeight: { xs: 233, md: 167 },
           // maxWidth: { xs: 350, md: 250 },
+          m: "auto"
         }}
         alt="OSU BUS MAP."
         src={bus_map}
       />
     </div>
+
     <div className = "bus info">
       <Accordion>
         <AccordionSummary
@@ -212,45 +215,51 @@ const Busses = () => {
         </AccordionDetails>
       </Accordion>
     </div>
-    {/* cards will be in parallel */}
-    <div className = "card notes"> 
-      <Card sx={{ maxWidth: 1/4 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={reg_bus}
-          alt="OSU BUS"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          Schedules Note
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            CABS runs reduced service during academic breaks and no service on university holidays. 
-            On home football Saturdays, CABS suspends service six hours prior to kickoff. Visit Ohio State’s 
-            academic calendar for dates and the TTM news feed for information about service changes.
-          </Typography>
-        </CardContent>
-      </Card>
 
-      <Card sx={{ maxWidth: 1/4 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={demand_bus}
-          alt="OSU BUS"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          On Demand Service
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            To request overnight on-demand service, call 614-293-8669 or use the call buttons 
-            located at the main entrances of Wexner Medical Center buildings and by the 
-            elevators of all patient and visitor garages.
-          </Typography>
-        </CardContent>
-      </Card>
+    <div className = "card notes"> 
+    <Grid container spacing={12}>
+      <Grid item xs={6}>
+        <Card sx={{ maxWidth: 1/4, m: "auto" }}>
+          <CardMedia
+            component="img"
+            height="140"
+            image={reg_bus}
+            alt="OSU BUS"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+            Schedules Note
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              CABS runs reduced service during academic breaks and no service on university holidays. 
+              On home football Saturdays, CABS suspends service six hours prior to kickoff. Visit Ohio State’s 
+              academic calendar for dates and the TTM news feed for information about service changes.
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+
+      <Grid item xs={6}>
+        <Card sx={{ maxWidth: 1/4, m: "auto"}}>
+          <CardMedia
+            component="img"
+            height="140"
+            image={demand_bus}
+            alt="OSU BUS"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+            On Demand Service
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              To request overnight on-demand service, call 614-293-8669 or use the call buttons 
+              located at the main entrances of Wexner Medical Center buildings and by the 
+              elevators of all patient and visitor garages.
+            </Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
       
     </div>
   </div>
