@@ -23,13 +23,6 @@ class FetchProfileAction(Action):
         data = requests.get(url).json 
         return [SlotSet("account_type", data["account_type"])]
     
-    def extract_class_title(self, dispatcher, tracker, domain):
-        class_name = tracker.get_slot('class')
-        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        print(url)
-        data = requests.get(url).json()
-        output = data['data']['courses'][0]["course"]["shortDescription"]
-        return  [SlotSet("course_title", output)]
     
     def extract_class_instructor(self, dispatcher, tracker, domain):
         class_name = tracker.get_slot('class')
@@ -59,6 +52,21 @@ class FetchProfileAction(Action):
         data = requests.get(url).json()
         output = data['data']['courses'][0]['sections'][0]['campus']
         return  [SlotSet("course_campus", output)]
+
+class extract_class_title(Action):
+    def name(self): 
+        return "extract_class_title" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot("class")
+        new_name = class_name.replace(" ", "%20")
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data["data"]["courses"][0]["course"]["shortDescription"]
+        print("The title of class" + class_name + " is " + output)
+        return  [SlotSet("course_title", output)]
+    
 
     
 

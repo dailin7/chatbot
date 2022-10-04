@@ -103,3 +103,35 @@ stories:
 #   - action: utter_goodbye
 
   
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: class_term
+
+- story: interactive_story_1
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - intent: deny
+
+- story: interactive_story_2
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+
+- story: interactive_story_1
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+
+- story: interactive_story_1
+  steps:
+  - intent: class_title
+    entities:
+    - class: CSE 5914
+  - action: extract_class_title
+  - slot_was_set:
+    - course_title: Vol & HR Mgmt
+  - intent: deny

@@ -1,176 +1,111 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - questions
-  - class_title
-  - class_term
-  - class_building
-  - class_campus
-  - class_description
-  - class_instructor
-  - bus_delayed
-  - bus_stop
-  - bus_direction
-  
-  
+- affirm
+- bot_challenge
+- bus_delayed
+- bus_direction
+- bus_stop
+- class_building
+- class_campus
+- class_description
+- class_instructor
+- class_term
+- class_title
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- questions
 responses:
-
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hey! How are you?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_question:
-  - text: "Do you have another question?"
-
+  - text: Do you have another question?
   utter_still_question:
-  - text: "Okay! Please ask me~ "
-
+  - text: 'Okay! Please ask me~ '
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
   extract_class_title:
-  - text: "The course title of {class} is {course_title}."
-
+  - text: The course title of {class} is {course_title}.
   extract_class_instructor:
-  - text: "The course instructor of {class} is {course_instructor}."
-
+  - text: The course instructor of {class} is {course_instructor}.
   extract_class_term:
-  - text: "The course term of {class} is {course_term}."
-
+  - text: The course term of {class} is {course_term}.
   extract_class_building:
-  - text: "The course building of {class} is {course_building}."
-
+  - text: The course building of {class} is {course_building}.
   extract_class_campus:
-  - text: "The course campus of {class} is {course_campus}."
-
-
-
-
-  #extract_class_description:
-  #- url: "https://content.osu.edu/v2/classes/search?q=CSE5914" 
-
-
-
-  #check_bus_delayed:
-  #- url: ""
-
-  #list_bus_stop:
-  #- url: ""
-
-  #extract_bus_direction:
-  #- url: ""
-
+  - text: The course campus of {class} is {course_campus}.
 session_config:
   session_expiration_time: 200
   carry_over_slots_to_new_session: true
-
 slots:
   class:
     type: text
-    initial_value: "CSE5914"
+    initial_value: CSE5914
     mappings:
     - type: from_entity
       entity: class
-  
   course_title:
     type: text
-    initial_value: "Capstone Design: Knowledge-Based Systems"
+    initial_value: 'Capstone Design: Knowledge-Based Systems'
     mappings:
     - type: from_entity
       entity: course_title
-
   course_term:
     type: text
-    initial_value: "Autumn 2022"
+    initial_value: Autumn 2022
     mappings:
     - type: from_entity
       entity: course_term
-
   course_building:
     type: text
-    initial_value: "Journalism Bldg 304"
+    initial_value: Journalism Bldg 304
     mappings:
     - type: from_entity
       entity: course_building
-
   course_campus:
     type: text
-    initial_value: "Columbus"
+    initial_value: Columbus
     mappings:
     - type: from_entity
       entity: course_campus
-
-
   course_description:
     type: text
     initial_value: "Capstone design project; conceptual and technical design; theory and practice of knowledge-based systems; teamwork, written and oral communication skills.\nPrereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing."
     mappings:
     - type: from_entity
       entity: course_description
-  
   course_instructor:
     type: text
-    initial_value: "Stanley J Vernier"
+    initial_value: Stanley J Vernier
     mappings:
     - type: from_entity
       entity: course_instructor
-
   course_instructionMode:
     type: text
-    initial_value: "In Person"
+    initial_value: In Person
     mappings:
     - type: from_entity
       entity: course_instructionMode
-
-  # delay_boolean:
-  #   type: text
-  #   initial_value: false
-  #   mappings:
-  #   - type: from_entity
-  #     entity: delay_boolean
-  
-  # stop_list:
-  #   type: list
-  #   mappings:
-  #   - type: from_entity
-  #     entity: stop_list
-  
-  # bus_destination:
-  #   type: text
-  #   initial_value: ""
-  #   mappings:
-  #   - type: from_entity
-  #     entity: bus_destination
-
-
 entities:
-  - class
-  - course_title
-  - course_term
-  - course_building #use building description in API
-  - course_campus
-  - course_description #use (long)description in API
-  - course_instructor
-  - course_instructionMode
-  # - delay_boolean
-  # - stop_list
-  # - bus_destination
+- class
+- course_title
+- course_term
+- course_building
+- course_campus
+- course_description
+- course_instructor
+- course_instructionMode
+actions:
+- extract_class_title
+- utter_greet
