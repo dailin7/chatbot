@@ -101,9 +101,9 @@ nlu:
 - intent: class_title
   examples: |
     - title of [CSE 5914](class)
-    - title of CSE 2421
-    - what is the title of CSE 1223?
-    - what is the topic of Math 2153?
+    - title of [CSE 2421](class)
+    - what is the title of [CSE 1223](class)?
+    - what is the topic of [Math 2153](class)?
     - what does MATH 1151 teach?
     - title of [CSE 5914](class)
 - intent: class_term
