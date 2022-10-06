@@ -33,6 +33,7 @@ stories:
   steps:
   - intent: class_title
   - action: extract_class_title
+  - action: utter_class_title
   - intent: class_term
   - action: extract_class_term
   - intent: mood_great
