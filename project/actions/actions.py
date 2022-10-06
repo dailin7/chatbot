@@ -89,7 +89,20 @@ class extract_class_building(Action):
         print("The building of class" + class_name + " is " + output)
         return  [SlotSet("course_building", output)]
 
-    
+class extract_class_campus(Action):
+    def name(self): 
+        return "extract_class_campus" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        new_name = class_name.replace(' ', '%20')
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data["data"]["courses"][0]["sections"][0]["campus"]
+        print("The campus of class" + class_name + " is " + output)
+        return  [SlotSet("course_campus", output)]
+
 
 
 # from typing import Any, Text, Dict, List
