@@ -110,62 +110,62 @@ nlu:
 
 - intent: class_title
   examples: |
-    - title of CSE 5914
-    - title of CSE 2421
-    - what is the title of CSE 1223?
-    - what is the topic of Math 2153?
-    - what does MATH 1151 teach?
+    - title of [CSE 5914](class)
+    - title of [CSE 2421](class)
+    - what is the title of [CSE 1223](class)?
+    - what is the topic of [Math 2153](class)?
+    - what does [MATH 1151](class) teach?
 
 - intent: class_term  #academic program
   examples: |
-    - term of CSE 5914
-    - term of Math 3345
-    - which term is CSE 1223 in?
-    - which semester is ECE 2020 in?
-    - semester of Engineering 1181?
+    - term of [CSE 5914](class)
+    - term of [Math 3345](class)
+    - which term is [CSE 1223](class) in?
+    - which semester is [ECE 2020](class) in?
+    - semester of [ENGR 1181](class)?
 
 - intent: class_building
   examples: |
-    - CSE 1224 takes in which building
-    - location of class BIOMEDE 2000
-    - building of DANCE 1101
-    - where is the class DANCE 2112?
-    - CSE 2501 building 
-    - FRENCH 2101.01 building 
-    - where does the CHEM 1100 take?
+    - [CSE 1224](class) takes in which building
+    - location of class [BIOMEDE 2000](classs)
+    - building of [DANCE 1101](class)
+    - where is the class [DANCE 2112](class)?
+    - [CSE 2501](class) building 
+    - [FRENCH 2101.01](class) building 
+    - where does the [CHEM 1100](class) take?
 
 - intent: class_campus
   examples: |
-    - which campus is DANCE 1101 in?
-    - where CSE 3901?
-    - where does the CHEM 1100 take?
-    - campus of CHEM 1200
-    - campus RELSTDS 2370
-    - DEABLST 5191 campus
+    - which campus is [DANCE 1101](class) in?
+    - where [CSE 3901](class)?
+    - where does the [CHEM 1100](class) take?
+    - campus of [CHEM 1200](class)
+    - campus [RELSTDS 2370](class)
+    - [DEABLST 5191](class) campus
 
 - intent: class_description
   examples: |
-    - what does CSE 3901 teach?
-    - what does Math 1150 mainly teach?
-    - what content does DANCE 1101 have?
-    - content of ESHESA 2570
-    - content of PUBHHBP 7520
-    - description of CSTW 3467S
-    - COMLDR 2193 description
-    - COMLDR 3330 content
+    - what does [CSE 3901](class) teach?
+    - what does [Math 1150](class) mainly teach?
+    - what content does [DANCE 1101](class) have?
+    - content of [ESHESA 2570](class)
+    - content of [PUBHHBP 7520](class)
+    - description of [CSTW 3467S](class)
+    - [COMLDR 2193](class) description
+    - [COMLDR 3330](class) content
 
 - intent: class_instructor
   examples: |
-    - who teach WGSST 1110? 
-    - who is the instructor of WGSST 1110?
-    - teacher of WGSST 1110
-    - instructor of WGSST 1110
-    - Math 3345 instructor 
-    - CSE5914 teacher
-    - list of WGSST 1110 instructors
-    - list of WGSST 1110 teachers
-    - professor of DSABLST 5191
-    - DANCE 1101 professor
+    - who teach [WGSST 1110](class)? 
+    - who is the instructor of [WGSST 1110](class)?
+    - teacher of [WGSST 1110](class)
+    - instructor of [WGSST 1110](class)
+    - [Math 3345](class) instructor 
+    - [CSE 5914](class) teacher
+    - list of [WGSST 1110](class) instructors
+    - list of [WGSST 1110](class) teachers
+    - professor of [DSABLST 5191](class)
+    - [DANCE 1101](class) professor
 
 
 # - intent: bus_delayed

@@ -22,36 +22,6 @@ class FetchProfileAction(Action):
         url = "http://myprofileurl.com" 
         data = requests.get(url).json 
         return [SlotSet("account_type", data["account_type"])]
-    
-    def extract_class_title(self, dispatcher, tracker, domain):
-        class_name = tracker.get_slot('class')
-        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        print(url)
-        data = requests.get(url).json()
-        output = data['data']['courses'][0]["course"]["shortDescription"]
-        return  [SlotSet("course_title", output)]
-    
-    def extract_class_instructor(self, dispatcher, tracker, domain):
-        class_name = tracker.get_slot('class')
-        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        print(url)
-        data = requests.get(url).json()
-        output = data['data']['courses'][0]["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
-        return  [SlotSet("course_instructor", output)]
-
-    def extract_class_term(self, dispatcher, tracker, domain):
-        class_name = tracker.get_slot('class')
-        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        data = requests.get(url).json()
-        output = data['data']['courses'][0]["course"]["term"]
-        return [SlotSet("course_term", output)]
-
-    def extract_class_building(self, dispatcher, tracker, domain):
-        class_name = tracker.get_slot('class')
-        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        data = requests.get(url).json()
-        output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
-        return  [SlotSet("course_building", output)]
 
     def extract_class_campus(self, dispatcher, tracker, domain):
         class_name = tracker.get_slot('class')
@@ -60,7 +30,79 @@ class FetchProfileAction(Action):
         output = data['data']['courses'][0]['sections'][0]['campus']
         return  [SlotSet("course_campus", output)]
 
+class extract_class_title(Action):
+    def name(self): 
+        return "extract_class_title" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        new_name = class_name.replace(' ', '%20')
+        url = 'https://content.osu.edu/v2/classes/search?q=' + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data["data"]["courses"][0]["course"]["shortDescription"]
+        print("The title of class" + class_name + " is " + output)
+        return  [SlotSet("course_title", output)]
+
     
+    
+class extract_class_instructor(Action):
+    def name(self): 
+        return "extract_class_instructor" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        new_name = class_name.replace(' ', '%20')
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data['data']['courses'][0]["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
+        print("The instructor of class" + class_name + " is " + output)
+        return  [SlotSet("course_instructor", output)]
+
+class extract_class_term(Action):
+    def name(self): 
+        return "extract_class_term" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        new_name = class_name.replace(' ', '%20')
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data['data']['courses'][0]["course"]["term"]
+        print("The term of class" + class_name + " is " + output)
+        return  [SlotSet("course_term", output)]
+
+
+class extract_class_building(Action):
+    def name(self): 
+        return "extract_class_building" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        new_name = class_name.replace(' ', '%20')
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
+        print("The building of class" + class_name + " is " + output)
+        return  [SlotSet("course_building", output)]
+
+class extract_class_campus(Action):
+    def name(self): 
+        return "extract_class_campus" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        new_name = class_name.replace(' ', '%20')
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output = data["data"]["courses"][0]["sections"][0]["campus"]
+        print("The campus of class" + class_name + " is " + output)
+        return  [SlotSet("course_campus", output)]
+
 
 
 # from typing import Any, Text, Dict, List
