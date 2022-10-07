@@ -36,7 +36,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   extract_class_title:
-  - text: The course title of {class} is {course_title}.
+  - text: The course title of {class} is {course_title}. 
   extract_class_instructor:
   - text: The course instructor of {class} is {course_instructor}.
   extract_class_term:
