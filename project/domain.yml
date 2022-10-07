@@ -17,6 +17,7 @@ intents:
 - mood_great
 - mood_unhappy
 - questions
+
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -35,19 +36,21 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-  extract_class_title:
-  - text: The course title of {class} is {course_title}. 
-  extract_class_instructor:
+  utter_class_title:
+  - text: The course title of {class} is {course_title}.
+  utter_class_instructor:
   - text: The course instructor of {class} is {course_instructor}.
-  extract_class_term:
+  utter_class_term:
   - text: The course term of {class} is {course_term}.
-  extract_class_building:
+  utter_class_building:
   - text: The course building of {class} is {course_building}.
-  extract_class_campus:
+  utter_class_campus:
   - text: The course campus of {class} is {course_campus}.
+
 session_config:
   session_expiration_time: 200
   carry_over_slots_to_new_session: true
+
 slots:
   class:
     type: text
@@ -97,6 +100,8 @@ slots:
     mappings:
     - type: from_entity
       entity: course_instructionMode
+
+
 entities:
 - class
 - course_title
@@ -106,6 +111,16 @@ entities:
 - course_description
 - course_instructor
 - course_instructionMode
+
 actions:
 - extract_class_title
 - utter_greet
+- utter_class_title
+- extract_class_instructor
+- utter_class_instructor
+- extract_class_term
+- utter_class_term
+- extract_class_building
+- utter_class_building
+- extract_class_campus
+- utter_class_campus
