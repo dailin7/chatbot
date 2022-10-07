@@ -37,14 +37,14 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_class_title:
-  - text: The course title of class is course_title.
-  extract_class_instructor:
+  - text: The course title of {class} is {course_title}.
+  utter_class_instructor:
   - text: The course instructor of {class} is {course_instructor}.
-  extract_class_term:
+  utter_class_term:
   - text: The course term of {class} is {course_term}.
-  extract_class_building:
+  utter_class_building:
   - text: The course building of {class} is {course_building}.
-  extract_class_campus:
+  utter_class_campus:
   - text: The course campus of {class} is {course_campus}.
 
 session_config:
@@ -117,6 +117,10 @@ actions:
 - utter_greet
 - utter_class_title
 - extract_class_instructor
+- utter_class_instructor
 - extract_class_term
+- utter_class_term
 - extract_class_building
+- utter_class_building
 - extract_class_campus
+- utter_class_campus
