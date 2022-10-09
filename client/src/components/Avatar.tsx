@@ -8,7 +8,7 @@ const Avatar = (props: any) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="absolute bottom-5 right-5" style={props.style}>
+    <div className="fixed bottom-5 right-5 z-50" style={props.style}>
       {hovered && <SupportWindow />}
       <div
         //onMouseEnter={() => setHovered(true)}

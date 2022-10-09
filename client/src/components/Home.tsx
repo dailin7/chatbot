@@ -6,6 +6,7 @@ import {
   BsSearch,
 } from "react-icons/bs";
 import { FaGraduationCap } from "react-icons/fa";
+import Widget from "rasa-webchat";
 
 import Button from "./Button";
 import CustomSelect from "./CustomSelect";
@@ -16,6 +17,7 @@ import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import Course from "./Course";
 import Avatar from "./Avatar";
 import { sampleCourse } from "./sampleCourse";
+import HeroBg from "./HeroBg";
 
 const initialFormData = {
   searchTerm: "",
@@ -37,17 +39,24 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-full h-[100vh] absolute top-0 z-50">
-        <Avatar />
-      </div>
+      {/* <Widget
+        initPayload={"/greet"}
+        socketUrl={"http://localhost:5005"}
+        customData={{ language: "en" }} // arbitrary custom data. Stay minimal as this will be added to the socket
+        title={"Title"}
+        hideWhenNotConnected={false}
+        onSocketEvent={{
+          bot_uttered: () => console.log("the bot said something"),
+          connect: () => console.log("connection established"),
+          disconnect: () => console.log("disconnected")
+        }}
+      /> */}
+      {/* <div className="w-full h-[100vh] fixed top-0"> */}
+      {/* <Avatar /> */}
+      {/* </div> */}
       <div className="w-full mx-auto">
         <div className="w-full flex flex-col items-center">
-          <div className="relative w-full flex flex-col justify-center items-center gap-12 pt-16 pb-8 -mb-4 sm:mb-0 bg-scarlet min-h-[250px]">
-            <img
-              src={heroDivider}
-              alt="Hero Divider"
-              className="absolute bottom-1 translate-y-full"
-            />
+          <HeroBg>
             <p className="w-[80%] mx-auto text-5xl font-bold text-white">
               OSU Class Search
             </p>
@@ -139,7 +148,7 @@ const Home = () => {
                 />
               </div>
             </form>
-          </div>
+          </HeroBg>
 
           <div className="relative w-[80%] z-10 bg-white mb-8 py-6 px-8 shadow-md">
             {showResults ? (

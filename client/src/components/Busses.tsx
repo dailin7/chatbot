@@ -230,7 +230,7 @@ const Busses = () => {
             <Typography gutterBottom variant="h5" component="div">
             Schedules Note
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography className="h-[200px] overflow-scroll" variant="body2" color="text.secondary">
               CABS runs reduced service during academic breaks and no service on university holidays. 
               On home football Saturdays, CABS suspends service six hours prior to kickoff. Visit Ohio State’s 
               academic calendar for dates and the TTM news feed for information about service changes.
