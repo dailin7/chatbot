@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import CourseTag from "./CourseTag";
 import FeaturedLink from "./FeaturedLink";
 
@@ -24,20 +25,22 @@ const Course = ({
   campus,
   academicCareer,
 }: IProps) => {
+  const { width } = useWindowDimensions();
+  const cutoff = width >= 1024 ? 200 : width >= 640 ? 100 : 50;
+
   return (
     <div>
-      <hr className="my-6" />
-      <p className="text-sm">{`${subject} ${catalogNumber}`}</p>
+      <p className="text-sm border-t-2 border-gray-200 pt-4 mt-6">{`${subject} ${catalogNumber}`}</p>
       <Link
         to={`/course/${courseId}`}
         className="font-bold text-xl hover:underline"
       >
-        <FeaturedLink>
+        <FeaturedLink className="after:hidden sm:after:block">
           <p className="mr-1">{title}</p>
         </FeaturedLink>
       </Link>
-      <p className="text-sm text-ellipsis mt-2 mb-4">
-        {description.substring(0, 100) + "..."}
+      <p className="text-sm mt-2 mb-4">
+        {description.substring(0, cutoff) + "..."}
       </p>
       <div className="flex flex-wrap gap-4 my-2">
         <CourseTag>{`${maxUnits} Credit Hours`}</CourseTag>

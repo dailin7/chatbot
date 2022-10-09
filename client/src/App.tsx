@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-gray-100 min-h-[100vh]">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div className="relative h-12 flex flex-col justify-center items-center bg-white z-10 shadow-md">
-      <div className="w-[80%] flex justify-between items-center">
+      <div className="max-w-[1536px] w-[90%] flex justify-between items-center">
         <Link to="/">
           <div className="flex gap-2 justify-center items-center">
             <FaGraduationCap className="text-4xl" />

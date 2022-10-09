@@ -6,18 +6,15 @@ import {
   BsSearch,
 } from "react-icons/bs";
 import { FaGraduationCap } from "react-icons/fa";
-import Widget from "rasa-webchat";
 
 import Button from "./Button";
 import CustomSelect from "./CustomSelect";
 import FeaturedLink from "./FeaturedLink";
-
-import heroDivider from "../images/hero-divider.svg";
-import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import Course from "./Course";
-import Avatar from "./Avatar";
-import { sampleCourse } from "./sampleCourse";
 import HeroBg from "./HeroBg";
+
+import { campuses, catalogNums, subjects, terms } from "./filterOptions";
+import { sampleCourse } from "./sampleCourse";
 
 const initialFormData = {
   searchTerm: "",
@@ -57,11 +54,11 @@ const Home = () => {
       <div className="w-full mx-auto">
         <div className="w-full flex flex-col items-center">
           <HeroBg>
-            <p className="w-[80%] mx-auto text-5xl font-bold text-white">
+            <p className="max-w-[1536px] w-[90%] mx-auto text-5xl font-bold text-white">
               OSU Class Search
             </p>
-            <form action="" className="w-full" onSubmit={searchClass}>
-              <div className="w-[80%] mx-auto flex justify-center items-center gap-4 mb-4">
+            <form className="w-full" onSubmit={searchClass}>
+              <div className="max-w-[1536px] w-[90%] mx-auto flex justify-center items-center gap-4 mb-4">
                 <input
                   type="text"
                   name="Search"
@@ -150,10 +147,10 @@ const Home = () => {
             </form>
           </HeroBg>
 
-          <div className="relative w-[80%] z-10 bg-white mb-8 py-6 px-8 shadow-md">
+          <div className="relative max-w-[1536px] w-[90%] z-10 bg-white mb-8 py-6 px-8 shadow-md">
             {showResults ? (
               <>
-                <p className="text-3xl font-bold mb-4">Search Results (10)</p>
+                <p className="text-3xl font-bold">Search Results (10)</p>
                 <div>
                   <Course
                     courseId={sampleCourse.course.courseId}
