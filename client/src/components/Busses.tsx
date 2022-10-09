@@ -19,10 +19,17 @@ import { styled } from '@mui/material/styles';
 import bus_map from "../images/cabs-system-map.jpg";
 import reg_bus from "../images/cabs-banner.jpeg";
 import demand_bus from "../images/on-demand-bus.jpeg";
+import recuriment from "../images/recuriment.jpeg";
+import { Button } from "@mui/material";
+import { BsCloudDownloadFill } from "react-icons/bs";
+import { positions } from '@mui/system';
+import { createTheme } from '@mui/material/styles';
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
+
+const StyledTableRow = styled(TableRow)(() => ({
   '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
+    backgroundColor: "#fdc1c1",
   },
   // hide last border
   '&:last-child td, &:last-child th': {
@@ -76,193 +83,211 @@ const mc_info = [
 
 const Busses = () => {
   return (
-  <div>
-    <div className = "bus map">
-      <Box
-        component="img"
-        sx={{
-          // height: 233,
-          width: 1/3,
-          // maxHeight: { xs: 233, md: 167 },
-          // maxWidth: { xs: 350, md: 250 },
-          m: "auto"
-        }}
-        alt="OSU BUS MAP."
-        src={bus_map}
-      />
-    </div>
 
-    <div className = "bus info">
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>BE - Buckeye Express</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableBody>
-                {be_info.map((row) => (
-                  <StyledTableRow
-                    key={row.period}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.period}
-                    </TableCell>
-                    <TableCell align="right">{row.time_fre_1}</TableCell>
-                    <TableCell align="right">{row.time_fre_2}</TableCell>
-                    <TableCell align="right">{row.time_fre_3}</TableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>CC - Campus Connector</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableBody>
-                {cc_info.map((row) => (
-                  <StyledTableRow
-                    key={row.period}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.period}
-                    </TableCell>
-                    <TableCell align="right">{row.time_fre_1}</TableCell>
-                    <TableCell align="right">{row.time_fre_2}</TableCell>
-                    <TableCell align="right">{row.time_fre_3}</TableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>ER - East Residential</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableBody>
-                {er_info.map((row) => (
-                  <StyledTableRow
-                    key={row.period}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.period}
-                    </TableCell>
-                    <TableCell align="right">{row.time_fre_1}</TableCell>
-                    <TableCell align="right">{row.time_fre_2}</TableCell>
-                    <TableCell align="right">{row.time_fre_3}</TableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>MC - Med Center Express</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableBody>
-                {mc_info.map((row) => (
-                  <StyledTableRow
-                    key={row.period}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.period}
-                    </TableCell>
-                    <TableCell align="right">{row.time_fre_1}</TableCell>
-                    <TableCell align="right">{row.time_fre_2}</TableCell>
-                    <TableCell align="right">{row.time_fre_3}</TableCell>
-                    <TableCell align="right">{row.time_fre_4}</TableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </AccordionDetails>
-      </Accordion>
-    </div>
+    <div className = "h-full">
 
-    <div className = "card notes"> 
-    <Grid container spacing={12}>
-      <Grid item xs={6}>
-        <Card sx={{ maxWidth: 1/4, m: "auto" }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={reg_bus}
-            alt="OSU BUS"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-            Schedules Note
-            </Typography>
-            <Typography className="h-[200px] overflow-scroll" variant="body2" color="text.secondary">
-              CABS runs reduced service during academic breaks and no service on university holidays. 
-              On home football Saturdays, CABS suspends service six hours prior to kickoff. Visit Ohio State’s 
-              academic calendar for dates and the TTM news feed for information about service changes.
-            </Typography>
-          </CardContent>
-        </Card>
+      <div className = "bus info">
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>BE - Buckeye Express</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableBody>
+                  {be_info.map((row) => (
+                    <StyledTableRow
+                      key={row.period}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.period}
+                      </TableCell>
+                      <TableCell align="right">{row.time_fre_1}</TableCell>
+                      <TableCell align="right">{row.time_fre_2}</TableCell>
+                      <TableCell align="right">{row.time_fre_3}</TableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>CC - Campus Connector</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableBody>
+                  {cc_info.map((row) => (
+                    <StyledTableRow
+                      key={row.period}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.period}
+                      </TableCell>
+                      <TableCell align="right">{row.time_fre_1}</TableCell>
+                      <TableCell align="right">{row.time_fre_2}</TableCell>
+                      <TableCell align="right">{row.time_fre_3}</TableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>ER - East Residential</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableBody>
+                  {er_info.map((row) => (
+                    <StyledTableRow
+                      key={row.period}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.period}
+                      </TableCell>
+                      <TableCell align="right">{row.time_fre_1}</TableCell>
+                      <TableCell align="right">{row.time_fre_2}</TableCell>
+                      <TableCell align="right">{row.time_fre_3}</TableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>MC - Med Center Express</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableBody>
+                  {mc_info.map((row) => (
+                    <StyledTableRow
+                      key={row.period}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row.period}
+                      </TableCell>
+                      <TableCell align="right">{row.time_fre_1}</TableCell>
+                      <TableCell align="right">{row.time_fre_2}</TableCell>
+                      <TableCell align="right">{row.time_fre_3}</TableCell>
+                      <TableCell align="right">{row.time_fre_4}</TableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+
+      <div className = "card notes, mt-5"> 
+      <Grid container>
+        <Grid item xs={4}>
+          <Card sx={{ width: 300, m: "auto"}} >
+            <CardMedia
+              component="img"
+              height="140"
+              image={reg_bus}
+              alt="OSU BUS"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="div">
+              Schedules Note
+              </Typography>
+              <Typography className="overflow-scroll h-[100px]" variant="body2" color="text.secondary" >
+                CABS runs reduced service during academic breaks and no service on university holidays. 
+                On home football Saturdays, CABS suspends service six hours prior to kickoff. Visit Ohio State’s 
+                academic calendar for dates and the TTM news feed for information about service changes. {" "}
+                <a className = "text-scarlet"href = "../images/cabs-system-map.jpg" >Download</a> Map here.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={4}>
+          <Card sx={{ width: 300, m: "auto"}} >
+            <CardMedia
+              component="img"
+              height="140"
+              image={demand_bus}
+              alt="OSU BUS"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="div">
+              On Demand Service
+              </Typography>
+              <Typography className="overflow-scroll h-[100px]" variant="body2" color="text.secondary" >
+                To request overnight on-demand service, call 614-293-8669 or use the call buttons 
+                located at the main entrances of Wexner Medical Center buildings and by the 
+                elevators of all patient and visitor garages.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={4}>
+          <Card sx={{ width: 300, m: "auto"}} >
+            <CardMedia
+              component="img"
+              height="140"
+              image={recuriment}
+              alt="recuriment"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="div">
+              Recuriment
+              </Typography>
+              <Typography className="overflow-scroll h-[100px]" variant="body2" color="text.secondary" >
+              Earn up to $16 an hour as a student bus driver for Ohio State’s Campus Area Bus Service 
+              (CABS). We will train you to drive! {" "}
+              <a className = "text-scarlet"href = "https://ttm.osu.edu/jobs">Apply </a> today.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
+        
+      </div>
 
-      <Grid item xs={6}>
-        <Card sx={{ maxWidth: 1/4, m: "auto"}}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={demand_bus}
-            alt="OSU BUS"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-            On Demand Service
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              To request overnight on-demand service, call 614-293-8669 or use the call buttons 
-              located at the main entrances of Wexner Medical Center buildings and by the 
-              elevators of all patient and visitor garages.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    </Grid>
-      
+      {/* <div className = "map download">
+        <Button className = "position-fixed bottom-100"
+          href={require('../images/cabs-system-map.jpg')}>
+          <BsCloudDownloadFill className="text-2xl" />
+          <p className="hidden sm:block">Download Map</p>
+        </Button>
+      </div> */}
+
     </div>
-  </div>
   )
 };
 

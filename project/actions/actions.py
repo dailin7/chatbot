@@ -23,13 +23,6 @@ class FetchProfileAction(Action):
         data = requests.get(url).json 
         return [SlotSet("account_type", data["account_type"])]
 
-    def extract_class_campus(self, dispatcher, tracker, domain):
-        class_name = tracker.get_slot('class')
-        url = "https://content.osu.edu/v2/classes/search?q=" + class_name
-        data = requests.get(url).json()
-        output = data['data']['courses'][0]['sections'][0]['campus']
-        return  [SlotSet("course_campus", output)]
-
 class extract_class_title(Action):
     def name(self): 
         return "extract_class_title" 
