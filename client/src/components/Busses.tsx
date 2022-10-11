@@ -24,8 +24,7 @@ import { Button } from "@mui/material";
 import { BsCloudDownloadFill } from "react-icons/bs";
 import { positions } from '@mui/system';
 import { createTheme } from '@mui/material/styles';
-
-
+import heroDivider from "../images/hero-divider.svg";
 
 const StyledTableRow = styled(TableRow)(() => ({
   '&:nth-of-type(odd)': {
@@ -83,8 +82,14 @@ const mc_info = [
 
 const Busses = () => {
   return (
-
     <div className = "h-full">
+
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5335.596115402888!2d-83.0146018331603!3d39.99826267077555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1665525146289!5m2!1sen!2sus" 
+        width="100%" height="650" 
+        loading="lazy" 
+        referrerPolicy="no-referrer-when-downgrade">
+      </iframe>
 
       <div className = "bus info">
         <Accordion>
@@ -210,7 +215,7 @@ const Busses = () => {
         </Accordion>
       </div>
 
-      <div className = "card notes, mt-5"> 
+      <div className = "card notes, mt-5, background-size: auto, bg-gradient-to-r from-[#ffcccc] to-[#ffcccc]"> 
       <Grid container>
         <Grid item xs={4}>
           <Card sx={{ width: 300, m: "auto"}} >
@@ -278,15 +283,6 @@ const Busses = () => {
       </Grid>
         
       </div>
-
-      {/* <div className = "map download">
-        <Button className = "position-fixed bottom-100"
-          href={require('../images/cabs-system-map.jpg')}>
-          <BsCloudDownloadFill className="text-2xl" />
-          <p className="hidden sm:block">Download Map</p>
-        </Button>
-      </div> */}
-
     </div>
   )
 };
