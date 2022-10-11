@@ -26,9 +26,6 @@ import { positions } from '@mui/system';
 import { createTheme } from '@mui/material/styles';
 import heroDivider from "../images/hero-divider.svg";
 
-
-
-
 const StyledTableRow = styled(TableRow)(() => ({
   '&:nth-of-type(odd)': {
     backgroundColor: "#fdc1c1",
@@ -286,7 +283,6 @@ const Busses = () => {
       </Grid>
         
       </div>
-
     </div>
   )
 };

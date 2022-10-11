@@ -29,17 +29,26 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
+- story: class title
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - action: utter_class_title
+
 - story: class title, term, and building search
   steps:
   - intent: class_title
   - action: extract_class_title
+  - action: utter_class_title
   - intent: class_term
   - action: extract_class_term
+  - action: utter_class_term
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
-  - intent: course_building
+  - intent: class_building
   - action: extract_class_building
+  - action: utter_class_building
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
@@ -52,6 +61,7 @@ stories:
   - action: utter_greet
   - intent: class_campus
   - action: extract_class_campus
+  - action: utter_class_campus
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
@@ -64,6 +74,7 @@ stories:
   - action: utter_greet
   - intent: class_instructor
   - action: extract_class_instructor
+  - action: utter_class_instructor
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
@@ -103,3 +114,41 @@ stories:
 #   - action: utter_goodbye
 
   
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: class_term
+  - action: extract_class_term
+  - action: utter_class_term
+
+- story: interactive_story_1
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - action: utter_class_title
+  - intent: deny
+
+- story: interactive_story_2
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - action: utter_class_title
+
+- story: interactive_story_1
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - action: utter_class_title
+
+- story: interactive_story_1
+  steps:
+  - intent: class_title
+    entities:
+    - class: CSE 5914
+  - action: extract_class_title
+  - action: utter_class_title
+  - slot_was_set:
+    - course_title: Vol & HR Mgmt
+  - intent: deny

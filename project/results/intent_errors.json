@@ -1,0 +1,10 @@
+[
+  {
+    "text": "where does the CHEM 1100 take?",
+    "intent": "class_building",
+    "intent_prediction": {
+      "name": "class_campus",
+      "confidence": 0.68345707654953
+    }
+  }
+]

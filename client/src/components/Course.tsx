@@ -1,38 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
-interface IProps{
-  ID:string
-  name:string
-  number:string
-  time:string
-  location: string
+import useWindowDimensions from "../hooks/useWindowDimensions";
+import CourseTag from "./CourseTag";
+import FeaturedLink from "./FeaturedLink";
+
+interface IProps {
+  courseId: string;
+  subject: string;
+  catalogNumber: string;
+  title: string;
+  description: string;
+  maxUnits: number;
+  campus: string;
+  academicCareer: string;
 }
-const Course = ({ID,name, number,time, location}:IProps) => {
+
+const Course = ({
+  courseId,
+  subject,
+  catalogNumber,
+  title,
+  description,
+  maxUnits,
+  campus,
+  academicCareer,
+}: IProps) => {
+  const { width } = useWindowDimensions();
+  const cutoff = width >= 1024 ? 200 : width >= 640 ? 100 : 50;
+
   return (
-    <div className="bg-slate-200  w-full mx-auto ">
-     <div className="	box-sizing: border-box w-[90%] mx-auto flex justify-between items-center">
-      <Link to="/courseInfo">
-        <h1 className="text-4xl">Course Number:{ID}</h1>
-        <ul className="text-1xl">
-        <li>Professor Name:{name}</li>
-        <li>Section Number:{number}</li>
-        <li>Time:{time}</li>
-        <li>Location:{location}</li>
-        </ul>
-        </Link>
-
-        </div>
-
-        
-
-
-     
+    <div>
+      <p className="text-sm border-t-2 border-gray-200 pt-4 mt-6">{`${subject} ${catalogNumber}`}</p>
+      <Link
+        to={`/course/${courseId}`}
+        className="font-bold text-xl hover:underline"
+      >
+        <FeaturedLink className="after:hidden sm:after:block">
+          <p className="mr-1">{title}</p>
+        </FeaturedLink>
+      </Link>
+      <p className="text-sm mt-2 mb-4">
+        {description.substring(0, cutoff) + "..."}
+      </p>
+      <div className="flex flex-wrap gap-4 my-2">
+        <CourseTag>{`${maxUnits} Credit Hours`}</CourseTag>
+        <CourseTag className="hidden xs:block">{academicCareer}</CourseTag>
+        <CourseTag className="hidden xs:block">{campus}</CourseTag>
+      </div>
     </div>
-    
-
-  
-  
-  
   );
 };
 

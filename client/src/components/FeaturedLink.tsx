@@ -1,14 +1,23 @@
 import React from "react";
 
 interface IProps {
-  text: string;
+  children?: string | JSX.Element | JSX.Element[];
+  className?: string;
+  direction?: "left" | "right";
 }
 
-const FeaturedLink = ({ text }: IProps) => {
+const FeaturedLink = ({ children, className, direction = "right" }: IProps) => {
+  const after =
+    direction === "right"
+      ? "after:-right-4 after:content-['>'] hover:after:translate-x-1"
+      : "after:-left-4 after:content-['<'] hover:after:-translate-x-1 ml-4";
+
   return (
-    <p className="relative font-semibold w-max hover:underline after:content-['>'] after:absolute after:-right-4 hover:after:translate-x-1 after:transition-transform after:text-scarlet">
-      {text}
-    </p>
+    <div
+      className={`relative font-semibold w-fit hover:underline after:absolute after:top-0 after:transition-transform after:text-scarlet ${after} ${className}`}
+    >
+      {children}
+    </div>
   );
 };
 

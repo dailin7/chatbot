@@ -11,3 +11,33 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Return class title when it ask
+  steps:
+  - intent: class_title
+  - action: extract_class_title
+  - action: utter_class_title
+
+- rule: Return class instructor when it ask
+  steps:
+  - intent: class_instructor
+  - action: extract_class_instructor
+  - action: utter_class_instructor
+
+- rule: Return class term when it ask
+  steps:
+  - intent: class_term
+  - action: extract_class_term
+  - action: utter_class_term
+
+- rule: Return class building when it ask
+  steps:
+  - intent: class_building
+  - action: extract_class_building
+  - action: utter_class_building
+
+- rule: Return class campus when it ask
+  steps:
+  - intent: class_campus
+  - action: extract_class_campus
+  - action: utter_class_campus
