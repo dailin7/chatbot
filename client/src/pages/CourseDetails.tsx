@@ -2,21 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useParams } from "react-router-dom";
 
-import CourseTag from "./CourseTag";
-import FeaturedLink from "./FeaturedLink";
+import CourseTag from "../components/CourseTag";
+import FeaturedLink from "../components/FeaturedLink";
 
-import { sampleCourse } from "./sampleCourse";
+import { sampleCourse } from "../utils/sampleCourse";
 
 const details = sampleCourse.course;
 const sections = sampleCourse.sections;
-const section = sections[0];
 
 const CourseDetails = () => {
-  // const { courseId } = useParams();
-  // console.log(section);
-
   return (
     <div className="max-w-[1536px] w-[90%] mx-auto mt-6">
       <Link to="/">

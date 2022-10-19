@@ -1,0 +1,52 @@
+.rw-header {
+  background: rgb(213, 55, 70) !important;
+}
+.rw-avatar {
+  border-radius: 100px !important;
+  padding: 0.25rem !important;
+  background: white !important;
+}
+
+.rw-header .rw-avatar {
+  margin-top: -0.25rem !important;
+}
+
+.rw-message .rw-avatar {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.rw-messages-container {
+  background: rgb(243 244 246) !important;
+}
+
+.rw-response {
+  background: white !important;
+}
+
+.rw-client {
+  background: rgb(213, 55, 70, 0.3) !important;
+  color: rgb(213, 55, 70) !important;
+}
+
+.rw-sender,
+.rw-new-message {
+  background: white !important;
+}
+
+.rw-send {
+  margin-right: 0.5rem !important;
+}
+
+.rw-send path {
+  fill: rgb(213, 55, 70) !important;
+}
+
+.rw-launcher {
+  background: rgb(213, 55, 70) !important;
+}
+
+.rw-open-launcher {
+  margin: auto !important;
+  margin-top: -0.25rem !important;
+}

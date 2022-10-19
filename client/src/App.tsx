@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Busses from "./components/Busses";
-import CourseDetails from "./components/CourseDetails";
-import Home from "./components/Home";
+import Busses from "./pages/Busses";
+import CourseDetails from "./pages/CourseDetails";
+import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 
+import "./styles/chatbot.css";
+import brutus from "./images/brutus.png";
+
 const App = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js";
+    script.async = true;
+    script.onload = () => {
+      window.WebChat.default(
+        {
+          customData: { language: "en" },
+          socketUrl: "http://localhost:5005",
+          socketPath: "/socket.io/",
+          title: "OSU Chatbot",
+          profileAvatar: brutus,
+          initPayload: "/get_started",
+        },
+        null
+      );
+    };
+    const t = document.head || document.getElementsByTagName("head")[0];
+    t.insertBefore(script, t.firstChild);
+  }, []);
+
   return (
     <div className="bg-gray-100 min-h-[100vh]">
       <Navbar />
