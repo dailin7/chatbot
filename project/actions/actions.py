@@ -34,7 +34,12 @@ class extract_class_title(Action):
         print(url)
         data = requests.get(url).json()
         output = data["data"]["courses"][0]["course"]["shortDescription"]
-        print("The title of class" + class_name + " is " + output)
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in class_name and catalogNumber in class_name:
+            print("The title of class" + class_name + " is " + output)
+        else:
+            print(class_name + " is not a valid class")
         return  [SlotSet("course_title", output)]
 
     
@@ -50,7 +55,12 @@ class extract_class_instructor(Action):
         print(url)
         data = requests.get(url).json()
         output = data['data']['courses'][0]["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
-        print("The instructor of class" + class_name + " is " + output)
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in class_name and catalogNumber in class_name:
+            print("The instructor of class" + class_name + " is " + output)
+        else:
+            print(class_name + " is not a valid class")
         return  [SlotSet("course_instructor", output)]
 
 class extract_class_term(Action):
@@ -65,7 +75,12 @@ class extract_class_term(Action):
         print(url)
         data = requests.get(url).json()
         output = data['data']['courses'][0]["course"]["term"]
-        print("The term of class" + class_name + " is " + output)
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in class_name and catalogNumber in class_name:
+            print("The term of class" + class_name + " is " + output)
+        else:
+            print(class_name + " is not a valid class")
         return  [SlotSet("course_term", output)]
 
 
@@ -80,7 +95,12 @@ class extract_class_building(Action):
         print(url)
         data = requests.get(url).json()
         output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
-        print("The building of class" + class_name + " is " + output)
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in class_name and catalogNumber in class_name:
+            print("The building of class" + class_name + " is " + output)
+        else:
+            print(class_name + " is not a valid class")
         return  [SlotSet("course_building", output)]
 
 class extract_class_campus(Action):
@@ -94,7 +114,12 @@ class extract_class_campus(Action):
         print(url)
         data = requests.get(url).json()
         output = data["data"]["courses"][0]["sections"][0]["campus"]
-        print("The campus of class" + class_name + " is " + output)
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in class_name and catalogNumber in class_name:
+            print("The campus of class" + class_name + " is " + output)
+        else:
+            print(class_name + " is not a valid class")
         return  [SlotSet("course_campus", output)]
 
 
