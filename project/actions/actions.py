@@ -57,6 +57,7 @@ class extract_class_term(Action):
     def name(self): 
         return "extract_class_term" 
 
+
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
         new_name = class_name.replace(' ', '%20')

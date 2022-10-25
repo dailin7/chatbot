@@ -41,3 +41,14 @@ rules:
   - intent: class_campus
   - action: extract_class_campus
   - action: utter_class_campus
+
+- rule: great first
+  conversation_start: true
+  steps:
+  - intent: welcome
+  - action: utter_welcome
+
+- rule: Ask what information user want when only type class number
+  steps:
+  - intent: class_number
+  - action: utter_class_number

@@ -167,6 +167,21 @@ nlu:
     - professor of [DSABLST 5191](class)
     - [DANCE 1101](class) professor
 
+- intent: class_number
+  examples: |
+    - [CSE 3901](class)
+    - [CSE 5914](class)
+    - [EDUTL 5123](class)
+    - [AEDECON 1252](class)
+    - [WELDENG 712](class)
+    - [EALL 745](class)
+    - [ANIMSCI 3797.04](class)
+    - [ENGR 5797.04](class)
+    - [ENTMLGY 7920](class)
+    - [MUSIC 3425](class)
+
+- intent: welcome
+
 
 # - intent: bus_delayed
 #   examples: |

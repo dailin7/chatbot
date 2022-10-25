@@ -17,6 +17,8 @@ intents:
 - mood_great
 - mood_unhappy
 - questions
+- welcome
+- class_number
 
 responses:
   utter_greet:
@@ -46,6 +48,10 @@ responses:
   - text: The course building of {class} is {course_building}.
   utter_class_campus:
   - text: The course campus of {class} is {course_campus}.
+  utter_welcome:
+  - text: "Test! Welcome!"
+  utter_class_number:
+  - text: "You can search for: title, term, building, instructor, campus."
 
 session_config:
   session_expiration_time: 200
@@ -124,3 +130,4 @@ actions:
 - utter_class_building
 - extract_class_campus
 - utter_class_campus
+- utter_class_number
