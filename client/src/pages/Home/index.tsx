@@ -15,6 +15,7 @@ import HeroBg from "../../components/HeroBg";
 
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import { sampleCourse } from "../../utils/sampleCourse";
+import { useAppSelector } from "../../hooks/useAppRedux";
 
 const initialFormData = {
   searchTerm: "",
@@ -25,13 +26,16 @@ const initialFormData = {
 };
 
 const Home = () => {
+  // const formData = useAppSelector(({ search }) => search);
   const [showFilter, setShowFilter] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [showResults, setShowResults] = useState(false);
+  const [prevSearchTerm, setPrevSearchTerm] = useState("");
 
   const searchClass = (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(formData);
+    setShowResults(formData.searchTerm !== initialFormData.searchTerm);
+    setPrevSearchTerm(formData.searchTerm);
   };
 
   return (
@@ -134,7 +138,9 @@ const Home = () => {
         <div className="relative max-w-[1536px] w-[90%] bg-white mb-8 py-6 px-8 shadow-md">
           {showResults ? (
             <>
-              <p className="text-3xl font-bold">Search Results (10)</p>
+              <p className="text-3xl font-bold">
+                Search Results for "{prevSearchTerm}" (10)
+              </p>
               <div>
                 <Course
                   courseId={sampleCourse.course.courseId}
@@ -199,12 +205,6 @@ const Home = () => {
             </>
           )}
         </div>
-        <button
-          className="bg-green-500 rounded-sm p-1 border-2 my-4"
-          onClick={() => setShowResults(!showResults)}
-        >
-          Toggle Show Search Results (remove when no longer needed)
-        </button>
       </div>
     </div>
   );
