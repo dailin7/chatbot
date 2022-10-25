@@ -13,6 +13,12 @@ const searchSlice = createSlice({
     name: "search",
     initialState: initialFormData,
     reducers: {
+      setSearchTerm(state, action) {
+          return { ...state, ...action.payload }
+      },
+      setTerm(state, action) {
+          return { ...state, term: action.payload }
+      }
     //   authenticate(state, action: { payload: AuthState; type: string }) {
     //     localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
     //     return action.payload;
@@ -24,5 +30,5 @@ const searchSlice = createSlice({
     },
   });
   
-//   export const { authenticate, logout } = authSlice.actions;
+  export const { setSearchTerm } = searchSlice.actions;
   export default searchSlice.reducer;
