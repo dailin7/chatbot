@@ -8,6 +8,7 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from re import S
+import re
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 import requests
@@ -29,6 +30,7 @@ class extract_class_title(Action):
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
+        # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
         url = 'https://content.osu.edu/v2/classes/search?q=' + new_name
         print(url)
@@ -50,6 +52,7 @@ class extract_class_instructor(Action):
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
+        # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
@@ -59,9 +62,11 @@ class extract_class_instructor(Action):
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
             print("The instructor of class" + class_name + " is " + output)
+            result = "The instructor of class" + class_name + " is " + output
         else:
             print(class_name + " is not a valid class")
-        return  [SlotSet("course_instructor", output)]
+            result = class_name + " is not a valid class"
+        return  [SlotSet("result", result)]
 
 class extract_class_term(Action):
     def name(self): 
@@ -70,6 +75,7 @@ class extract_class_term(Action):
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
+        # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
@@ -79,9 +85,11 @@ class extract_class_term(Action):
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
             print("The term of class" + class_name + " is " + output)
+            result = "The term of class" + class_name + " is " + output
         else:
             print(class_name + " is not a valid class")
-        return  [SlotSet("course_term", output)]
+            result = class_name + " is not a valid class"
+        return  [SlotSet("result", result)]
 
 
 class extract_class_building(Action):
@@ -90,6 +98,7 @@ class extract_class_building(Action):
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
+        # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
@@ -99,9 +108,11 @@ class extract_class_building(Action):
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
             print("The building of class" + class_name + " is " + output)
+            result = "The building of class" + class_name + " is " + output
         else:
             print(class_name + " is not a valid class")
-        return  [SlotSet("course_building", output)]
+            result = class_name + " is not a valid class"
+        return  [SlotSet("result", result)]
 
 class extract_class_campus(Action):
     def name(self): 
@@ -109,6 +120,7 @@ class extract_class_campus(Action):
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
+        # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
@@ -118,9 +130,11 @@ class extract_class_campus(Action):
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
             print("The campus of class" + class_name + " is " + output)
+            result = "The campus of class" + class_name + " is " + output
         else:
             print(class_name + " is not a valid class")
-        return  [SlotSet("course_campus", output)]
+            result = class_name + " is not a valid class"
+        return  [SlotSet("result", result)]
 
 
 
