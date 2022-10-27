@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Action } from "@remix-run/router";
 import { campuses, terms } from "../pages/Home/filterOptions";
 
 const initialFormData = {
@@ -14,11 +15,16 @@ const searchSlice = createSlice({
     initialState: initialFormData,
     reducers: {
       setSearchTerm(state, action) {
-          return { ...state, ...action.payload }
+          return { ...state, searchTerm:action.payload }
       },
       setTerm(state, action) {
           return { ...state, term: action.payload }
+      },
+      clearTerm(state){
+        return {...state,...initialFormData}
       }
+      
+
     //   authenticate(state, action: { payload: AuthState; type: string }) {
     //     localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
     //     return action.payload;
@@ -31,4 +37,5 @@ const searchSlice = createSlice({
   });
   
   export const { setSearchTerm } = searchSlice.actions;
+  export const {clearTerm }= searchSlice.actions;
   export default searchSlice.reducer;

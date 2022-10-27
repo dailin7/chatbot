@@ -17,6 +17,7 @@ import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import { sampleCourse } from "../../utils/sampleCourse";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppRedux";
 import { setSearchTerm } from "../../store/search.slice";
+import { clearTerm } from "../../store/search.slice";
 
 const initialFormData = {
   searchTerm: "",
@@ -79,6 +80,16 @@ const Home = () => {
               >
                 <BsFilterRight className="text-2xl" />
                 <p className="hidden sm:block">Filter</p>
+              </Button>
+              <Button
+                className="py-2 px-2 sm:px-4 flex justify-center items-center gap-2"
+                onClick={() => {
+                  setShowFilter((prev) => !prev)
+                  dispatch(clearTerm())
+                }}
+              >
+                <BsFilterRight className="text-2xl" />
+                <p className="hidden sm:block">Clear</p>
               </Button>
             </div>
             <div
