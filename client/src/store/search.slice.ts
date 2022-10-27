@@ -3,8 +3,8 @@ import { campuses, terms } from "../pages/Home/filterOptions";
 
 const initialFormData = {
     searchTerm: "",
-    term: terms[0].value,
-    campus: campuses[0].value,
+    term: terms[0],
+    campus: campuses[0],
     subject: "",
     catalogNum: "",
   };
@@ -14,10 +14,19 @@ const searchSlice = createSlice({
     initialState: initialFormData,
     reducers: {
       setSearchTerm(state, action) {
-          return { ...state, ...action.payload }
+          return { ...state, searchTerm: action.payload }
       },
       setTerm(state, action) {
           return { ...state, term: action.payload }
+      },
+      setCampus(state, action) {
+          return { ...state, campus: action.payload }
+      },
+      setSubject(state, action) {
+          return { ...state, subject: action.payload }
+      },
+      setCatalogNum(state, action) {
+        return { ...state, catalogNum: action.payload }
       }
     //   authenticate(state, action: { payload: AuthState; type: string }) {
     //     localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
@@ -30,5 +39,6 @@ const searchSlice = createSlice({
     },
   });
   
-  export const { setSearchTerm } = searchSlice.actions;
+
+  export const searchActions = searchSlice.actions;
   export default searchSlice.reducer;
