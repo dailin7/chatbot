@@ -9,6 +9,7 @@
 
 from re import S
 import re
+from unittest import result
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 import requests
@@ -39,10 +40,13 @@ class extract_class_title(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
-            print("The title of class" + class_name + " is " + output)
+            print("The title of class" + str(class_name) + " is " + str(output))
+            result = "The title of class" + str(class_name) + " is " + str(output)
         else:
-            print(class_name + " is not a valid class")
-        return  [SlotSet("course_title", output)]
+            print(str(class_name) + " is not a valid class")
+            result = str(class_name) + " is not a valid class"
+        return  [SlotSet("result", result)]
+
 
     
     
@@ -61,11 +65,11 @@ class extract_class_instructor(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
-            print("The instructor of class" + class_name + " is " + output)
-            result = "The instructor of class" + class_name + " is " + output
+            print("The instructor of class" + str(class_name) + " is " + str(output))
+            result = "The instructor of class" + str(class_name) + " is " + str(output)
         else:
-            print(class_name + " is not a valid class")
-            result = class_name + " is not a valid class"
+            print(str(class_name) + " is not a valid class")
+            result = str(class_name) + " is not a valid class"
         return  [SlotSet("result", result)]
 
 class extract_class_term(Action):
@@ -107,11 +111,11 @@ class extract_class_building(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
-            print("The building of class" + class_name + " is " + output)
-            result = "The building of class" + class_name + " is " + output
+            print("The building of class" + str(class_name) + " is " + str(output))
+            result = "The building of class" + str(class_name) + " is " + str(output)
         else:
-            print(class_name + " is not a valid class")
-            result = class_name + " is not a valid class"
+            print(str(class_name) + " is not a valid class")
+            result = str(class_name) + " is not a valid class"
         return  [SlotSet("result", result)]
 
 class extract_class_campus(Action):
@@ -129,11 +133,11 @@ class extract_class_campus(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
-            print("The campus of class" + class_name + " is " + output)
-            result = "The campus of class" + class_name + " is " + output
+            print("The campus of class" + str(class_name) + " is " + str(output))
+            result = "The campus of class" + str(class_name) + " is " + str(output)
         else:
-            print(class_name + " is not a valid class")
-            result = class_name + " is not a valid class"
+            print(str(class_name) + " is not a valid class")
+            result = str(class_name) + " is not a valid class"
         return  [SlotSet("result", result)]
 
 
