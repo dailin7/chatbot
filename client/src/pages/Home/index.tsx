@@ -15,7 +15,8 @@ import HeroBg from "../../components/HeroBg";
 
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import { sampleCourse } from "../../utils/sampleCourse";
-import { useAppSelector } from "../../hooks/useAppRedux";
+import { useAppDispatch, useAppSelector } from "../../hooks/useAppRedux";
+import { setSearchTerm } from "../../store/search.slice";
 
 const initialFormData = {
   searchTerm: "",
@@ -26,9 +27,12 @@ const initialFormData = {
 };
 
 const Home = () => {
-  // const formData = useAppSelector(({ search }) => search);
+  const formData = useAppSelector(({ search }) => search);
+  console.log(formData)
+  const dispatch = useAppDispatch();
+
   const [showFilter, setShowFilter] = useState(false);
-  const [formData, setFormData] = useState(initialFormData);
+  // const [formData, setFormData] = useState(initialFormData);
   const [showResults, setShowResults] = useState(false);
   const [prevSearchTerm, setPrevSearchTerm] = useState("");
 
@@ -56,10 +60,11 @@ const Home = () => {
                 value={formData.searchTerm}
                 autoComplete="off"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    searchTerm: e.target.value,
-                  }))
+                  dispatch(setSearchTerm(e.target.value))
+                  // setFormData((prev) => ({
+                  //   ...prev,
+                  //   searchTerm: e.target.value,
+                  // }))
                 }
               />
               <button type="submit">
@@ -88,48 +93,48 @@ const Home = () => {
                 options={terms}
                 defaultValue={terms[0]}
                 isSearchable
-                onChange={(e: any) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    term: `${e?.value}`,
-                  }))
-                }
+                // onChange={(e: any) =>
+                //   setFormData((prev) => ({
+                //     ...prev,
+                //     term: `${e?.value}`,
+                //   }))
+                // }
               />
               <CustomSelect
                 label="Campus"
                 options={campuses}
                 defaultValue={campuses[0]}
                 isSearchable
-                onChange={(e: any) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    campus: `${e?.value}`,
-                  }))
-                }
+                // onChange={(e: any) =>
+                //   setFormData((prev) => ({
+                //     ...prev,
+                //     campus: `${e?.value}`,
+                //   }))
+                // }
               />
               <CustomSelect
                 label="Subject"
                 options={subjects}
                 isSearchable
                 isClearable
-                onChange={(e: any) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    subject: `${e?.value}`,
-                  }))
-                }
+                // onChange={(e: any) =>
+                //   setFormData((prev) => ({
+                //     ...prev,
+                //     subject: `${e?.value}`,
+                //   }))
+                // }
               />
               <CustomSelect
                 label="Course #"
                 options={catalogNums}
                 isSearchable
                 isClearable
-                onChange={(e: any) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    catalogNum: `${e?.value}`,
-                  }))
-                }
+                // onChange={(e: any) =>
+                //   setFormData((prev) => ({
+                //     ...prev,
+                //     catalogNum: `${e?.value}`,
+                //   }))
+                // }
               />
             </div>
           </form>
