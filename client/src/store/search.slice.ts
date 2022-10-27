@@ -25,7 +25,7 @@ const searchSlice = createSlice({
 
       clearTerm(state){
         return {...state,...initialFormData}
-
+      },
       setCampus(state, action) {
           return { ...state, campus: action.payload }
       },
