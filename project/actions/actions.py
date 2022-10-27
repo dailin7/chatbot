@@ -33,6 +33,7 @@ class extract_class_title(Action):
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
         url = 'https://content.osu.edu/v2/classes/search?q=' + new_name
         print(url)
         data = requests.get(url).json()
@@ -58,15 +59,16 @@ class extract_class_instructor(Action):
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
         output = data['data']['courses'][0]["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
-        if subject in class_name and catalogNumber in class_name:
-            print("The instructor of class" + str(class_name) + " is " + str(output))
-            result = "The instructor of class" + str(class_name) + " is " + str(output)
+        if subject in upper_one and catalogNumber in upper_one:
+            print("The instructor of class" + class_name + " is " + output)
+            result = "The instructor of class" + class_name + " is " + output
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"
@@ -81,13 +83,14 @@ class extract_class_term(Action):
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
         output = data['data']['courses'][0]["course"]["term"]
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
-        if subject in class_name and catalogNumber in class_name:
+        if subject in upper_one and catalogNumber in upper_one:
             print("The term of class" + class_name + " is " + output)
             result = "The term of class" + class_name + " is " + output
         else:
@@ -104,15 +107,16 @@ class extract_class_building(Action):
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
         output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
-        if subject in class_name and catalogNumber in class_name:
-            print("The building of class" + str(class_name) + " is " + str(output))
-            result = "The building of class" + str(class_name) + " is " + str(output)
+        if subject in upper_one and catalogNumber in upper_one:
+            print("The building of class" + class_name + " is " + output)
+            result = "The building of class" + class_name + " is " + output
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"
@@ -126,15 +130,16 @@ class extract_class_campus(Action):
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
         new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
         output = data["data"]["courses"][0]["sections"][0]["campus"]
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
-        if subject in class_name and catalogNumber in class_name:
-            print("The campus of class" + str(class_name) + " is " + str(output))
-            result = "The campus of class" + str(class_name) + " is " + str(output)
+        if subject in upper_one and catalogNumber in upper_one:
+            print("The campus of class" + class_name + " is " + output)
+            result = "The campus of class" + class_name + " is " + output
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"

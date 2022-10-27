@@ -16,7 +16,11 @@ import HeroBg from "../../components/HeroBg";
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import { sampleCourse } from "../../utils/sampleCourse";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppRedux";
+
 import { setSearchTerm } from "../../store/search.slice";
+import { clearTerm } from "../../store/search.slice";
+import { searchActions } from "../../store/search.slice";
+
 
 const initialFormData = {
   searchTerm: "",
@@ -38,7 +42,11 @@ const Home = () => {
 
   const searchClass = (e: SyntheticEvent) => {
     e.preventDefault();
-    setShowResults(formData.searchTerm !== initialFormData.searchTerm);
+    setShowResults((formData.searchTerm !== initialFormData.searchTerm) || 
+                  (formData.term.value !== initialFormData.term) ||
+                  (formData.campus.value !== initialFormData.campus) ||
+                  (formData.catalogNum !== initialFormData.catalogNum) ||
+                  (formData.subject !== initialFormData.subject));
     setPrevSearchTerm(formData.searchTerm);
   };
 
@@ -60,11 +68,7 @@ const Home = () => {
                 value={formData.searchTerm}
                 autoComplete="off"
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  dispatch(setSearchTerm(e.target.value))
-                  // setFormData((prev) => ({
-                  //   ...prev,
-                  //   searchTerm: e.target.value,
-                  // }))
+                  dispatch(searchActions.setSearchTerm(e.target.value))
                 }
               />
               <button type="submit">
@@ -80,6 +84,16 @@ const Home = () => {
                 <BsFilterRight className="text-2xl" />
                 <p className="hidden sm:block">Filter</p>
               </Button>
+              <Button
+                className="py-2 px-2 sm:px-4 flex justify-center items-center gap-2"
+                onClick={() => {
+                  setShowFilter((prev) => !prev)
+                  dispatch(clearTerm())
+                }}
+              >
+                <BsFilterRight className="text-2xl" />
+                <p className="hidden sm:block">Clear</p>
+              </Button>
             </div>
             <div
               className={`relative max-w-[1536px] w-[90%] mx-auto flex flex-col sm:flex-row gap-2 sm:gap-4 lg:gap-8 xl:gap-16 mb-4 animate-height z-20 ${
@@ -91,50 +105,42 @@ const Home = () => {
               <CustomSelect
                 label="Term"
                 options={terms}
-                defaultValue={terms[0]}
+                defaultValue={formData.term}
                 isSearchable
-                // onChange={(e: any) =>
-                //   setFormData((prev) => ({
-                //     ...prev,
-                //     term: `${e?.value}`,
-                //   }))
-                // }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  dispatch(searchActions.setTerm(e))
+                }
               />
               <CustomSelect
                 label="Campus"
                 options={campuses}
-                defaultValue={campuses[0]}
+                defaultValue={formData.campus}
                 isSearchable
-                // onChange={(e: any) =>
-                //   setFormData((prev) => ({
-                //     ...prev,
-                //     campus: `${e?.value}`,
-                //   }))
-                // }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  dispatch(searchActions.setCampus(e))
+                }
               />
               <CustomSelect
                 label="Subject"
                 options={subjects}
+                defaultValue={formData.subject}
                 isSearchable
                 isClearable
-                // onChange={(e: any) =>
-                //   setFormData((prev) => ({
-                //     ...prev,
-                //     subject: `${e?.value}`,
-                //   }))
-                // }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  dispatch(searchActions.setSubject(e))
+                }
               />
               <CustomSelect
                 label="Course #"
                 options={catalogNums}
+                defaultValue={formData.catalogNum}
                 isSearchable
                 isClearable
-                // onChange={(e: any) =>
-                //   setFormData((prev) => ({
-                //     ...prev,
-                //     catalogNum: `${e?.value}`,
-                //   }))
-                // }
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  dispatch(searchActions.setCatalogNum(e))
+                }
+                
+                
               />
             </div>
           </form>
