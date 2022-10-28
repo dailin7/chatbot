@@ -14,7 +14,7 @@ const searchSlice = createSlice({
     initialState: initialFormData,
     reducers: {
       setSearchTerm(state, action) {
-          return { ...state, ...action.payload }
+          return { ...state, searchTerm: action.payload }
       },
       setTerm(state, action) {
           return { ...state, term: action.payload }

@@ -17,6 +17,7 @@ import { campuses, catalogNums, subjects, terms } from "./filterOptions";
 import { sampleCourse } from "../../utils/sampleCourse";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppRedux";
 import { setSearchTerm } from "../../store/search.slice";
+import { useLazyGetClassesQuery } from "../../store/search.api";
 
 const initialFormData = {
   searchTerm: "",
@@ -28,18 +29,23 @@ const initialFormData = {
 
 const Home = () => {
   const formData = useAppSelector(({ search }) => search);
-  console.log(formData)
   const dispatch = useAppDispatch();
 
   const [showFilter, setShowFilter] = useState(false);
-  // const [formData, setFormData] = useState(initialFormData);
   const [showResults, setShowResults] = useState(false);
   const [prevSearchTerm, setPrevSearchTerm] = useState("");
+
+  const [trigger, result] = useLazyGetClassesQuery();
+  console.log(result)
 
   const searchClass = (e: SyntheticEvent) => {
     e.preventDefault();
     setShowResults(formData.searchTerm !== initialFormData.searchTerm);
     setPrevSearchTerm(formData.searchTerm);
+    if (showResults) {
+      trigger("");
+      console.log("TRIGERED API")
+    }
   };
 
   return (
@@ -59,8 +65,9 @@ const Home = () => {
                 className="w-full h-10 rounded-lg px-4 pb-[2px] shadow-md hover:bg-gray-200 focus:bg-gray-200 focus:outline focus:outline-2"
                 value={formData.searchTerm}
                 autoComplete="off"
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  dispatch(setSearchTerm(e.target.value))
+                onChange={
+                  (e: ChangeEvent<HTMLInputElement>) =>
+                    dispatch(setSearchTerm(e.target.value))
                   // setFormData((prev) => ({
                   //   ...prev,
                   //   searchTerm: e.target.value,
