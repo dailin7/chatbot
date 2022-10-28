@@ -39,15 +39,15 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_class_title:
-  - text: The course title of {class} is {course_title}.
+  - text: Class title:{result}.
   utter_class_instructor:
-  - text: The course instructor of {class} is {course_instructor}.
+  - text: Class instructor:{result}.
   utter_class_term:
-  - text: The course term of {class} is {course_term}.
+  - text: Class term:{result}.
   utter_class_building:
-  - text: The course building of {class} is {course_building}.
+  - text: Class building:{result}.
   utter_class_campus:
-  - text: The course campus of {class} is {course_campus}.
+  - text: Class campus:{result}.
   utter_welcome:
   - text: "Test! Welcome!"
   utter_class_number:
@@ -106,7 +106,12 @@ slots:
     mappings:
     - type: from_entity
       entity: course_instructionMode
-
+  result:
+    type: text
+    initial_value: CSS 5914 is not a valid class
+    mappings:
+    - type: from_entity
+      entity: result
 
 entities:
 - class
@@ -117,6 +122,7 @@ entities:
 - course_description
 - course_instructor
 - course_instructionMode
+- result
 
 actions:
 - extract_class_title
