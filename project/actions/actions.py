@@ -9,6 +9,7 @@
 
 from re import S
 import re
+from tkinter.messagebox import NO
 from unittest import result
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
@@ -41,8 +42,12 @@ class extract_class_title(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in class_name and catalogNumber in class_name:
-            print("The title of class" + str(class_name) + " is " + str(output))
-            result = "The title of class" + str(class_name) + " is " + str(output)
+            if output != None:
+                print("The title of class" + str(class_name) + " is " + str(output))
+                result = "The title of class" + str(class_name) + " is " + str(output)
+            else:
+                print("Sorry, I can't find the title of class" + str(class_name))
+                result = "Sorry, I can't find the title of class" + str(class_name)
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"
@@ -67,11 +72,15 @@ class extract_class_instructor(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            print("The instructor of class" + class_name + " is " + output)
-            result = "The instructor of class" + class_name + " is " + output
+            if output != None:
+                print("The instructor of class" + class_name + " is " + output)
+                result = "The instructor of class" + class_name + " is " + output
+            else:
+                print("The instructor of class" + class_name + " is not available")
+                result = "The instructor of class" + class_name + " is not available"
         else:
-            print(str(class_name) + " is not a valid class")
-            result = str(class_name) + " is not a valid class"
+            print(class_name + " is not a valid class")
+            result = class_name + " is not a valid class"
         return  [SlotSet("result", result)]
 
 class extract_class_term(Action):
@@ -91,8 +100,12 @@ class extract_class_term(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            print("The term of class" + class_name + " is " + output)
-            result = "The term of class" + class_name + " is " + output
+            if output != None:
+                print("The term of class" + class_name + " is " + output)
+                result = "The term of class" + class_name + " is " + output
+            else:
+                print("The term of class" + class_name + " is not available")
+                result = "The term of class" + class_name + " is not available"
         else:
             print(class_name + " is not a valid class")
             result = class_name + " is not a valid class"
@@ -115,8 +128,12 @@ class extract_class_building(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            print("The building of class" + class_name + " is " + output)
-            result = "The building of class" + class_name + " is " + output
+            if output != None:
+                print("The building of class" + class_name + " is " + output)
+                result = "The building of class" + class_name + " is " + output
+            else:
+                print("The building of class" + class_name + " is not available")
+                result = "The building of class" + class_name + " is not available"
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"
@@ -138,8 +155,12 @@ class extract_class_campus(Action):
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            print("The campus of class" + class_name + " is " + output)
-            result = "The campus of class" + class_name + " is " + output
+            if output != None:
+                print("The campus of class" + class_name + " is " + output)
+                result = "The campus of class" + class_name + " is " + output
+            else:
+                print("The campus of class" + class_name + " is not available")
+                result = "The campus of class" + class_name + " is not available"
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"
