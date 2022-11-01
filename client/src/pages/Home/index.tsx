@@ -1,4 +1,4 @@
-import React, { ChangeEvent, SyntheticEvent, useState } from "react";
+import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 import {
   BsAwardFill,
   BsFillBookFill,
@@ -14,13 +14,10 @@ import Course from "../../components/Course";
 import HeroBg from "../../components/HeroBg";
 
 import { campuses, catalogNums, subjects, terms } from "./filterOptions";
-import { sampleCourse } from "../../utils/sampleCourse";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppRedux";
 
-import { setSearchTerm } from "../../store/search.slice";
 import { useLazyGetClassesQuery } from "../../store/search.api";
 import { searchActions } from "../../store/search.slice";
-
 
 const initialFormData = {
   searchTerm: "",
@@ -31,6 +28,8 @@ const initialFormData = {
 };
 
 const Home = () => {
+  const store = useAppSelector((store) => store);
+  console.log(store);
   const formData = useAppSelector(({ search }) => search);
   const dispatch = useAppDispatch();
 
@@ -38,21 +37,35 @@ const Home = () => {
   const [showResults, setShowResults] = useState(false);
   const [prevSearchTerm, setPrevSearchTerm] = useState("");
 
-  const [trigger, result] = useLazyGetClassesQuery();
-  console.log(result)
+  const [searchTrigger, searchResult] = useLazyGetClassesQuery();
+
+  const search = () => {
+    const formChanged =
+      formData.searchTerm !== initialFormData.searchTerm ||
+      formData.term.value !== initialFormData.term ||
+      formData.campus.value !== initialFormData.campus ||
+      formData.catalogNum !== initialFormData.catalogNum ||
+      formData.subject !== initialFormData.subject;
+    setShowResults(formChanged);
+    setPrevSearchTerm(formData.searchTerm);
+    if (formChanged) {
+      searchTrigger({
+        searchTerm: formData.searchTerm,
+        term: formData.term.value,
+        campus: formData.campus.value,
+        subject: formData.subject,
+        catalogNum: formData.catalogNum,
+      });
+    }
+  };
+
+  useEffect(() => {
+    search();
+  }, []);
 
   const searchClass = (e: SyntheticEvent) => {
     e.preventDefault();
-    setShowResults((formData.searchTerm !== initialFormData.searchTerm) || 
-                  (formData.term.value !== initialFormData.term) ||
-                  (formData.campus.value !== initialFormData.campus) ||
-                  (formData.catalogNum !== initialFormData.catalogNum) ||
-                  (formData.subject !== initialFormData.subject));
-    setPrevSearchTerm(formData.searchTerm);
-    if (showResults) {
-      trigger("");
-      console.log("TRIGERED API")
-    }
+    search();
   };
 
   return (
@@ -92,8 +105,8 @@ const Home = () => {
               <Button
                 className="py-2 px-2 sm:px-4 flex justify-center items-center gap-2"
                 onClick={() => {
-                  setShowFilter((prev) => !prev)
-                  dispatch(searchActions.clearTerm())
+                  setShowFilter(() => false);
+                  dispatch(searchActions.clearTerm());
                 }}
               >
                 <BsFilterRight className="text-2xl" />
@@ -144,8 +157,6 @@ const Home = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   dispatch(searchActions.setCatalogNum(e))
                 }
-                
-                
               />
             </div>
           </form>
@@ -153,33 +164,56 @@ const Home = () => {
 
         <div className="relative max-w-[1536px] w-[90%] bg-white mb-8 py-6 px-8 shadow-md">
           {showResults ? (
-            <>
-              <p className="text-3xl font-bold">
-                Search Results for "{prevSearchTerm}" (10)
-              </p>
-              <div>
-                <Course
-                  courseId={sampleCourse.course.courseId}
-                  subject={sampleCourse.course.subject}
-                  catalogNumber={sampleCourse.course.catalogNumber}
-                  title={sampleCourse.course.title}
-                  description={sampleCourse.course.description}
-                  maxUnits={sampleCourse.course.maxUnits}
-                  campus={sampleCourse.course.campus}
-                  academicCareer={sampleCourse.course.academicCareer}
-                />
-                <Course
-                  courseId={sampleCourse.course.courseId}
-                  subject={sampleCourse.course.subject}
-                  catalogNumber={sampleCourse.course.catalogNumber}
-                  title={sampleCourse.course.title}
-                  description={sampleCourse.course.description}
-                  maxUnits={sampleCourse.course.maxUnits}
-                  campus={sampleCourse.course.campus}
-                  academicCareer={sampleCourse.course.academicCareer}
-                />
-              </div>
-            </>
+            searchResult.isFetching ? (
+              <div>Loading</div>
+            ) : searchResult.isSuccess ? (
+              <>
+                <p className="text-3xl font-bold">
+                  {searchResult.data.length ? "Search " : "No "}
+                  Results for "{prevSearchTerm}"
+                  {searchResult.data.length
+                    ? `(${searchResult.data.length})`
+                    : ""}
+                </p>
+                {searchResult.data.map(({ course }) => (
+                  <Course
+                    key={course.courseId}
+                    courseId={course.courseId}
+                    subject={course.subject}
+                    catalogNumber={course.catalogNumber}
+                    title={course.title}
+                    description={course.description}
+                    maxUnits={course.maxUnits}
+                    campus={course.campus}
+                    academicCareer={course.academicCareer}
+                  />
+                ))}
+                {/* <div>
+                  <Course
+                    courseId={sampleCourse.course.courseId}
+                    subject={sampleCourse.course.subject}
+                    catalogNumber={sampleCourse.course.catalogNumber}
+                    title={sampleCourse.course.title}
+                    description={sampleCourse.course.description}
+                    maxUnits={sampleCourse.course.maxUnits}
+                    campus={sampleCourse.course.campus}
+                    academicCareer={sampleCourse.course.academicCareer}
+                  />
+                  <Course
+                    courseId={sampleCourse.course.courseId}
+                    subject={sampleCourse.course.subject}
+                    catalogNumber={sampleCourse.course.catalogNumber}
+                    title={sampleCourse.course.title}
+                    description={sampleCourse.course.description}
+                    maxUnits={sampleCourse.course.maxUnits}
+                    campus={sampleCourse.course.campus}
+                    academicCareer={sampleCourse.course.academicCareer}
+                  />
+                </div> */}
+              </>
+            ) : (
+              <div>Error</div>
+            )
           ) : (
             <>
               <p className="text-3xl font-bold mb-5">Popular Searches</p>

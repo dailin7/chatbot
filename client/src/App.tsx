@@ -21,7 +21,7 @@ const App = () => {
           socketPath: "/socket.io/",
           title: "OSU Chatbot",
           profileAvatar: brutus,
-          initPayload: "/get_started",
+          initPayload: "/welcome",
         },
         null
       );
