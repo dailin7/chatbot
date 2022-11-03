@@ -47,6 +47,8 @@ stories:
   - action: utter_happy
   - action: utter_question
   - intent: class_building
+  - action: utter_term_ask
+  - intent: class_term_selection
   - action: extract_class_building
   - action: utter_class_building
   - intent: mood_great
@@ -60,6 +62,8 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: class_campus
+  - action: utter_term_ask
+  - intent: class_term_selection
   - action: extract_class_campus
   - action: utter_class_campus
   - intent: mood_great
@@ -73,6 +77,8 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: class_instructor
+  - action: utter_term_ask
+  - intent: class_term_selection
   - action: extract_class_instructor
   - action: utter_class_instructor
   - intent: mood_great

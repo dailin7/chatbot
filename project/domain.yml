@@ -19,6 +19,7 @@ intents:
 - questions
 - welcome
 - class_number
+- class_term_selection
 
 responses:
   utter_greet:
@@ -52,6 +53,8 @@ responses:
   - text: "Hello! Welcome to Buckeye Chatbot!!! At here, you can ask about the class you would like to know. You can ask about title, instructor, building, campus, terms, and time spot!"
   utter_class_number:
   - text: "You can search for: title, term, building, instructor, campus."
+  utter_term_ask:
+  - text: Which term do you want to search?
 
 session_config:
   session_expiration_time: 200
@@ -137,3 +140,4 @@ actions:
 - extract_class_campus
 - utter_class_campus
 - utter_class_number
+- utter_term_ask
