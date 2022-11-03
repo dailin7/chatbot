@@ -72,6 +72,19 @@ const Home = () => {
     }
   };
 
+  const search_2 = (tag: string) => {
+    setShowResults(true);
+    setPrevSearchTerm(tag);
+    searchTrigger({
+      searchTerm: tag,
+      term: formData.term.value,
+      campus: formData.campus.value,
+      subject: formData.subject,
+      catalogNum: formData.catalogNum,
+    });
+
+  };
+
   useEffect(() => {
     search();
   }, []);
@@ -119,6 +132,7 @@ const Home = () => {
                 className="py-2 px-2 sm:px-4 flex justify-center items-center gap-2"
                 onClick={() => {
                   setShowFilter(() => false);
+                  setShowResults(() => false)
                   dispatch(searchActions.clearTerm());
                 }}
               >
@@ -224,8 +238,16 @@ const Home = () => {
                     <p className="m-0 text-xl font-bold">General Education</p>
                   </div>
                   <div className="ml-8 mt-2 flex flex-col gap-2">
-                    <FeaturedLink>All Gen-Eds</FeaturedLink>
-                    <FeaturedLink>Easy Classes</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("history")
+                      dispatch(searchActions.setSearchTerm("history"))
+                      }
+                      }>History</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("art")
+                      dispatch(searchActions.setSearchTerm("art"))
+                      }
+                      }>Art</FeaturedLink>
                   </div>
                 </div>
                 <div className="w-full border-t-2 border-gray-200 pt-4">
@@ -234,9 +256,21 @@ const Home = () => {
                     <p className="m-0 text-xl font-bold">Level</p>
                   </div>
                   <div className="ml-8 mt-2 flex flex-col gap-2">
-                    <FeaturedLink>Undergraduate</FeaturedLink>
-                    <FeaturedLink>Graduate</FeaturedLink>
-                    <FeaturedLink>Pharmacy</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("undergraduate")
+                      dispatch(searchActions.setSearchTerm("undergraduate"))
+                      }
+                      }>Undergraduate</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("graduate")
+                      dispatch(searchActions.setSearchTerm("graduate"))
+                      }
+                      }>Graduate</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("pharmacy")
+                      dispatch(searchActions.setSearchTerm("pharmacy"))
+                      }
+                      }>Pharmacy</FeaturedLink>
                   </div>
                 </div>
                 <div className="w-full border-t-2 border-gray-200 pt-4">
@@ -245,10 +279,26 @@ const Home = () => {
                     <p className="m-0 text-xl font-bold">Majors</p>
                   </div>
                   <div className="ml-8 mt-2 flex flex-col gap-2">
-                    <FeaturedLink>Finance</FeaturedLink>
-                    <FeaturedLink>Biology</FeaturedLink>
-                    <FeaturedLink>Psychology</FeaturedLink>
-                    <FeaturedLink>CSE</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("finance")
+                      dispatch(searchActions.setSearchTerm("finance"))
+                      }
+                      }>Finance</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("biology")
+                      dispatch(searchActions.setSearchTerm("biology"))
+                      }
+                      }>Biology</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("psychology")
+                      dispatch(searchActions.setSearchTerm("psychology"))
+                      }
+                      }>Psychology</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      search_2("cse")
+                      dispatch(searchActions.setSearchTerm("cse"))
+                      }
+                      }>CSE</FeaturedLink>
                   </div>
                 </div>
               </div>

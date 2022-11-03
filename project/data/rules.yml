@@ -21,6 +21,8 @@ rules:
 - rule: Return class instructor when it ask
   steps:
   - intent: class_instructor
+  - action: utter_term_ask
+  - intent: class_term_selection
   - action: extract_class_instructor
   - action: utter_class_instructor
 
@@ -33,12 +35,16 @@ rules:
 - rule: Return class building when it ask
   steps:
   - intent: class_building
+  - action: utter_term_ask
+  - intent: class_term_selection
   - action: extract_class_building
   - action: utter_class_building
 
 - rule: Return class campus when it ask
   steps:
   - intent: class_campus
+  - action: utter_term_ask
+  - intent: class_term_selection
   - action: extract_class_campus
   - action: utter_class_campus
 

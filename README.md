@@ -16,3 +16,9 @@ rasa run -m models --enable-api --cors "*" --debug
 3. Install client dependencies by switching to the `client` folder and running `npm install`
 
 4. Start the client server with `npm start`
+
+
+Before run rasa, need to run
+```
+rasa run actions
+```
