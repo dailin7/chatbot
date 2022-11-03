@@ -50,7 +50,7 @@ responses:
   utter_class_campus:
   - text: Class campus:{result}.
   utter_welcome:
-  - text: "Test! Welcome!"
+  - text: "Hello! Welcome to Buckeye Chatbot!!! At here, you can ask about the class you would like to know. You can ask about title, instructor, building, campus, terms, and time spot!"
   utter_class_number:
   - text: "You can search for: title, term, building, instructor, campus."
   utter_term_ask:

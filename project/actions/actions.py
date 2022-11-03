@@ -63,6 +63,7 @@ class extract_class_instructor(Action):
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
+        class_term = tracker.get_slot('course_term')
         new_name = class_name.replace(' ', '%20')
         upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
