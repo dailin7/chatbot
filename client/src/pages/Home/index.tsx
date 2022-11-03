@@ -119,6 +119,7 @@ const Home = () => {
                 className="py-2 px-2 sm:px-4 flex justify-center items-center gap-2"
                 onClick={() => {
                   setShowFilter(() => false);
+                  setShowResults(() => false)
                   dispatch(searchActions.clearTerm());
                 }}
               >
