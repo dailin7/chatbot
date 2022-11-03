@@ -59,6 +59,19 @@ const Home = () => {
     }
   };
 
+  const search_2 = (tag: string) => {
+    setShowResults(true);
+    setPrevSearchTerm(formData.searchTerm);
+    searchTrigger({
+      searchTerm: tag,
+      term: formData.term.value,
+      campus: formData.campus.value,
+      subject: formData.subject,
+      catalogNum: formData.catalogNum,
+    });
+
+  };
+
   useEffect(() => {
     search();
   }, []);
@@ -225,7 +238,18 @@ const Home = () => {
                   </div>
                   <div className="ml-8 mt-2 flex flex-col gap-2">
                     <FeaturedLink>All Gen-Eds</FeaturedLink>
-                    <FeaturedLink>Easy Classes</FeaturedLink>
+                    <FeaturedLink onClick={() => {
+                      // searchTrigger({
+                      //   searchTerm: "Easy Classes",
+                      //   term: formData.term.value,
+                      //   campus: formData.campus.value,
+                      //   subject: formData.subject,
+                      //   catalogNum: formData.catalogNum,
+                      // })
+                      search_2("Easy Classes")
+                      dispatch(searchActions.setSearchTerm("Easy Classes"))
+                      }
+                      }>Easy Classes</FeaturedLink>
                   </div>
                 </div>
                 <div className="w-full border-t-2 border-gray-200 pt-4">
