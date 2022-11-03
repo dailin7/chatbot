@@ -1,7 +1,7 @@
 export const terms = [
-  { value: "au22", label: "Autumn 2022" },
-  { value: "su22", label: "Summer 2022" },
-  { value: "sp23", label: "Spring 2023" },
+  { value: "1228", label: "Autumn 2022" },
+  { value: "1224", label: "Summer 2022" },
+  { value: "1232", label: "Spring 2023" },
 ];
 
 export const campuses = [
@@ -11,6 +11,41 @@ export const campuses = [
   { value: "lim", label: "Lima" },
   { value: "woo", label: "Wooster" },
   { value: "man", label: "Mansfield" },
+];
+
+export const academicCareers = [
+  {
+    label: "Undergraduate",
+    value: "ugrd",
+  },
+  {
+    label: "Dentistry",
+    value: "dent",
+  },
+  {
+    label: "Graduate",
+    value: "grad",
+  },
+  {
+    label: "Law",
+    value: "law",
+  },
+  {
+    label: "Medicine",
+    value: "med",
+  },
+  {
+    label: "Optometry",
+    value: "opt",
+  },
+  {
+    label: "Pharmacy",
+    value: "php",
+  },
+  {
+    label: "Veterinary Medicine",
+    value: "vmed",
+  },
 ];
 
 export const subjects = [
