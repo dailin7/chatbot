@@ -269,7 +269,18 @@ const Home = () => {
                     <p className="m-0 text-xl font-bold">Majors</p>
                   </div>
                   <div className="ml-8 mt-2 flex flex-col gap-2">
-                    <FeaturedLink>Finance</FeaturedLink>
+                    <FeaturedLink
+                      onClick={() => {
+                        dispatch(searchActions.setSearchTerm("Finance"));
+                        searchTrigger({
+                          searchTerm: "Finance",
+                          term: formData.term.value,
+                          campus: formData.campus.value,
+                          subject: formData.subject,
+                          catalogNum: formData.catalogNum,
+                        });
+                      }}
+                    >Finance</FeaturedLink>
                     <FeaturedLink>Biology</FeaturedLink>
                     <FeaturedLink>Psychology</FeaturedLink>
                     <FeaturedLink>CSE</FeaturedLink>
