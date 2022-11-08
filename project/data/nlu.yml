@@ -182,7 +182,37 @@ nlu:
 
 - intent: welcome
 
-- intent: class_term_selection
+- intent: class_term_selection1
+  examples: |
+    - [summer 2022](course_term)
+    - [autumn 2022](course_term)
+    - [sum 2022](course_term)
+    - [spring 2023](course_term)
+    - [aut 2022](course_term)
+    - [spr 2023](course_term)
+    - [2022 summer](course_term)
+    - [2022 autumn](course_term)
+    - [2023 spring](course_term)
+    - [2022 sum](course_term)
+    - [2022 aut](course_term)
+    - [2023 spr](course_term)
+
+- intent: class_term_selection2
+  examples: |
+    - [summer 2022](course_term)
+    - [autumn 2022](course_term)
+    - [sum 2022](course_term)
+    - [spring 2023](course_term)
+    - [aut 2022](course_term)
+    - [spr 2023](course_term)
+    - [2022 summer](course_term)
+    - [2022 autumn](course_term)
+    - [2023 spring](course_term)
+    - [2022 sum](course_term)
+    - [2022 aut](course_term)
+    - [2023 spr](course_term)
+
+- intent: class_term_selection3
   examples: |
     - [summer 2022](course_term)
     - [autumn 2022](course_term)

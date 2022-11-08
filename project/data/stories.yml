@@ -47,8 +47,8 @@ stories:
   - action: utter_happy
   - action: utter_question
   - intent: class_building
-  - action: utter_term_ask
-  - intent: class_term_selection
+  - action: utter_term_ask2
+  - intent: class_term_selection2
   - action: extract_class_building
   - action: utter_class_building
   - intent: mood_great
@@ -62,8 +62,8 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: class_campus
-  - action: utter_term_ask
-  - intent: class_term_selection
+  - action: utter_term_ask3
+  - intent: class_term_selection3
   - action: extract_class_campus
   - action: utter_class_campus
   - intent: mood_great
@@ -77,8 +77,8 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: class_instructor
-  - action: utter_term_ask
-  - intent: class_term_selection
+  - action: utter_term_ask1
+  - intent: class_term_selection1
   - action: extract_class_instructor
   - action: utter_class_instructor
   - intent: mood_great
@@ -158,3 +158,34 @@ stories:
   - slot_was_set:
     - course_title: Vol & HR Mgmt
   - intent: deny
+
+- story: instructor
+  steps:
+  - intent: class_instructor
+  - action: utter_term_ask1
+  - intent: class_term_selection1
+    entities:
+    - class: Spring 2022
+  - action: extract_class_instructor
+  - action: utter_class_instructor
+
+- story: building
+  steps:
+  - intent: class_building
+  - action: utter_term_ask2
+  - intent: class_term_selection2
+    entities:
+    - class: Spring 2022
+  - action: extract_class_building
+  - action: utter_class_building
+
+- story: instructor
+  steps:
+  - intent: class_campus
+  - action: utter_term_ask3
+  - intent: class_term_selection3
+    entities:
+    - class: Spring 2022
+  - action: extract_class_campus
+  - action: utter_class_campus
+
