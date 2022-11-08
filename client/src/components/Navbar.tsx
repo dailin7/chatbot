@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import { FaGraduationCap } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Squeeze as Hamburger } from "hamburger-react";
+import { useAppDispatch, useAppSelector } from "../hooks/useAppRedux";
+import { useLazyGetClassesQuery } from "../store/search.api";
+import { searchActions } from "../store/search.slice";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Navbar = () => {
+  const store = useAppSelector((store) => store);
+  const formData = useAppSelector(({ search }) => search);
+  const dispatch = useAppDispatch();
   const { width } = useWindowDimensions();
   const [isOpen, setOpen] = useState(false);
 
@@ -16,12 +22,12 @@ const Navbar = () => {
   return (
     <div className="relative h-12 flex flex-col justify-center items-center bg-white z-10 shadow-md">
       <div className="max-w-[1536px] w-[90%] flex justify-between items-center">
-        <Link to="/">
-          <div className="flex gap-2 justify-center items-center">
+        
+          <div  className="flex gap-2 justify-center items-center">
             <FaGraduationCap className="text-4xl" />
             <p className="text-4xl">Chatbot</p>
+          
           </div>
-        </Link>
         <div className="xs:hidden" onBlur={() => setOpen(() => false)}>
           <Hamburger toggled={isOpen} toggle={setOpen} size={24} />
         </div>

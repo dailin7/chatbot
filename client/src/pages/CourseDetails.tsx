@@ -16,6 +16,7 @@ const CourseDetails = () => {
     searchTerm: formData.searchTerm,
     term: formData.term.value,
     campus: formData.campus.value,
+    academicCareer: formData.academicCareer.value,
     subject: formData.subject,
     catalogNum: formData.catalogNum,
   });
@@ -58,7 +59,7 @@ const CourseDetails = () => {
           </p>
           <div className="relative z-10">
             {course.sections.map((section) => (
-              <Accordion square={true}>
+              <Accordion square={true} key={section.section}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <div className="w-full flex gap-4 lg:items-center">
                     <div>

@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { campuses, terms } from "../pages/Home/filterOptions";
+import { academicCareers, campuses, terms } from "../pages/Home/filterOptions";
 
 const initialFormData = {
   searchTerm: "",
   term: terms[0],
   campus: campuses[0],
+  academicCareer: academicCareers[0],
   subject: "",
   catalogNum: "",
 };
@@ -24,6 +25,9 @@ const searchSlice = createSlice({
     },
     setCampus(state, action) {
       return { ...state, campus: action.payload };
+    },
+    setAcademicCareer(state, action) {
+      return { ...state, academicCareer: action.payload };
     },
     setSubject(state, action) {
       return { ...state, subject: action.payload };

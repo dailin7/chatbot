@@ -17,17 +17,19 @@ export const api = createApi({
         searchTerm,
         term,
         campus,
+        academicCareer,
         subject,
         catalogNum,
       }: {
         searchTerm: string;
         term: string;
         campus: string;
+        academicCareer: string;
         subject: string;
         catalogNum: string;
-      }) => `/search?q=${searchTerm}`,
+      }) => `/search?q=${searchTerm}&term=${term}&campus=${campus}&academic-career=${academicCareer}`,
       transformResponse: (response: ISearchResponse) => {
-        console.log(response);
+        console.log("NEW RESPONSE")
         return response.data.courses;
       },
     }),
