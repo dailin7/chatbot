@@ -24,54 +24,38 @@ rules:
   - action: extract_class_term
   - action: utter_class_term
 
-- rule: Return class instructor when it ask
+- rule: Ask which term when ask about the instructor
   steps:
   - intent: class_instructor
-  - action: utter_term_ask1
+  - action: utter_term_ask
 
-- rule: correspond1
-  steps:
-  - action: utter_term_ask1
-  - intent: class_term_selection1
-
-- rule: one
+- rule: Return class instructor when it ask
   steps:
   - intent: class_term_selection1
   - action: extract_class_instructor
   - action: utter_class_instructor
 
-- rule: Return class building when it ask
+- rule: Ask which term when ask about the building
   steps:
   - intent: class_building
-  - action: utter_term_ask2
+  - action: utter_term_ask
 
-- rule: correspond2
-  steps:
-  - action: utter_term_ask2
-  - intent: class_term_selection2
-
-- rule: two
+- rule: Return class building when receive term
   steps:
   - intent: class_term_selection2
   - action: extract_class_building
   - action: utter_class_building
 
-- rule: Return class campus when it ask
+- rule: Ask which term when ask about campus
   steps:
   - intent: class_campus
-  - action: utter_term_ask3
+  - action: utter_term_ask
 
-- rule: correspond3
-  steps:
-  - action: utter_term_ask3
-  - intent: class_term_selection3
-
-- rule: threee
+- rule: Return class campus when receive term
   steps:
   - intent: class_term_selection3
   - action: extract_class_campus
   - action: utter_class_campus
-
 
 - rule: great first
   conversation_start: true
