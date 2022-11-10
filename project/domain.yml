@@ -19,9 +19,7 @@ intents:
 - questions
 - welcome
 - class_number
-- class_term_selection1
-- class_term_selection2
-- class_term_selection3
+# - class_term_selection
 
 
 responses:
@@ -56,8 +54,8 @@ responses:
   - text: "Hello! Welcome to Buckeye Chatbot!!! At here, you can ask about the class you would like to know. You can ask about title, instructor, building, campus, terms, and time spot!"
   utter_class_number:
   - text: "You can search for: title, term, building, instructor, campus."
-  utter_term_ask:
-  - text: Which term do you want to search?(Spring 2023, Autumn 2022, Summer 2022)
+  # utter_term_ask:
+  # - text: Which term do you want to search?(Spring 2023, Autumn 2022, Summer 2022)
   
 
 
@@ -145,5 +143,5 @@ actions:
 - extract_class_campus
 - utter_class_campus
 - utter_class_number
-- utter_term_ask
+# - utter_term_ask
 

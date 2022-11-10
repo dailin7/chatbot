@@ -71,12 +71,12 @@ class extract_class_instructor(Action):
         data = requests.get(url).json()
         dic = {}
         for i in data["data"]["courses"]:
-            if i["course"]["term"] == class_term:
+            if i["course"]["term"] == class_term and i["sections"][0]["meetings"][0]["instructors"][0]["displayName"] != None:
                 output = i["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
-            if output in dic:
-                dic[output] += 1
-            else:
-                dic[output] = 1
+                if output in dic:
+                    dic[output] += 1
+                else:
+                    dic[output] = 1
         lis = list(dic.keys())
         
         subject = data["data"]["courses"][0]["course"]["subject"]
@@ -124,21 +124,27 @@ class extract_class_building(Action):
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
+        class_term = tracker.get_slot('course_term')
         new_name = class_name.replace(' ', '%20')
         upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
-        output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
+        dic = {}
+        for i in data["data"]["courses"]:
+            if i["course"]["term"] == class_term and i["sections"][0]["meetings"][0]["buildingDescription"] != None:
+                output = i["sections"][0]["meetings"][0]["buildingDescription"]
+                if output in dic:
+                    dic[output] += 1
+                else:
+                    dic[output] = 1
+        lis = list(dic.keys())
+        # output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            if output != None:
-                print("The building of class " + class_name + " is " + output)
-                result = "The building of class " + class_name + " is " + output
-            else:
-                print("The building of class " + class_name + " is not available")
-                result = "The building of class " + class_name + " is not available"
+            print("The building of class " + class_name + " are " + ', '.join(lis))
+            result = "The building of class " + class_name + " are " + ', '.join(lis)
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"
