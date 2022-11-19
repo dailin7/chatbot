@@ -23,3 +23,17 @@ export interface RouteStop {
   latitude: number;
   longitude: number;
 }
+
+export interface AllRoutes {
+  status: string;
+  lastModified: string;
+  data: { routes: Route[] };
+}
+
+export interface Route {
+  code: string;
+  service: string;
+  name: string;
+  color: string;
+  darkColor: string;
+}

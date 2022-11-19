@@ -1,74 +1,46 @@
-import React, { useState } from "react";
+import React, { Dispatch } from "react";
 import { decode } from "@googlemaps/polyline-codec";
 import { MarkerF, PolylineF, InfoWindowF } from "@react-google-maps/api";
 
-import { RoutePattern, RouteStop } from "../interfaces/IBus";
-import { useEffect } from "react";
+import { useGetRouteDetailsQuery } from "../store/search.api";
 
 const BusPath = ({
-  patterns,
-  stops,
+  code,
+  name,
   color,
+  setSelectedCenter,
 }: {
-  patterns: RoutePattern[];
-  stops: RouteStop[];
+  code: string;
+  name: string;
   color: string;
+  setSelectedCenter: Dispatch<any>;
 }) => {
-  const options = { strokeColor: color };
-  const [selectedCenter, setSelectedCenter] = useState<{
-    name: string;
-    latitude: number;
-    longitude: number;
-  } | null>(null);
-
-  useEffect(() => {
-    const listener = (ev: KeyboardEvent) => {
-      if (ev.key === "Escape") {
-        setSelectedCenter(null);
-      }
-    };
-    window.addEventListener("keydown", listener);
-    return () => {
-      window.removeEventListener("keydown", listener);
-    };
-  }, []);
+  const { data, isFetching, isError } = useGetRouteDetailsQuery(code);
+  if (isFetching || isError || !data) return <div></div>;
 
   return (
     <>
-      {patterns.map(({ id, encodedPolyline }) => (
+      {data.patterns.map(({ id, encodedPolyline }) => (
         <PolylineF
           key={id}
           path={decode(encodedPolyline, 5).map(([lat, lng]) => ({ lat, lng }))}
-          options={options}
+          options={{ strokeColor: color }}
         />
       ))}
-      {stops.map(({ id, name, latitude, longitude }) => (
+      {data.stops.map(({ id, name, latitude, longitude }) => (
         <MarkerF
           key={id}
           position={{ lat: latitude, lng: longitude }}
           icon={{
             path: google.maps.SymbolPath.CIRCLE,
             strokeColor: "red",
-            scale: 3,
+            scale: 4,
           }}
-          onClick={(e: google.maps.MapMouseEvent) => {
+          onClick={() => {
             setSelectedCenter({ name, latitude, longitude });
           }}
         />
       ))}
-      {selectedCenter ? (
-        <div onBlur={() => setSelectedCenter(null)}>
-          <InfoWindowF
-            onCloseClick={() => setSelectedCenter(null)}
-            position={{
-              lat: selectedCenter.latitude,
-              lng: selectedCenter.longitude,
-            }}
-          >
-            <div>{selectedCenter.name}</div>
-          </InfoWindowF>
-        </div>
-      ) : null}
     </>
   );
 };
