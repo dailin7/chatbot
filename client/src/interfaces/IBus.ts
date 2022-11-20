@@ -37,3 +37,44 @@ export interface Route {
   color: string;
   darkColor: string;
 }
+
+export interface RouteBusses {
+  status: string;
+  lastModified: string;
+  data: { vehicles: Vehicle[] };
+}
+
+export interface Vehicle {
+  routeCode: string;
+  distance: number;
+  heading: number;
+  latitude: number;
+  patternId: string;
+  destination: string;
+  delayed: boolean;
+  speed: number;
+  predictions: Prediction[];
+  service: string;
+  lastStop?: any;
+  id: string;
+  bus_id?: any;
+  updated: string;
+  longitude: number;
+}
+
+export interface Prediction {
+  routeCode: string;
+  routeColor: string;
+  predictionCountdown: string;
+  isDelayed: boolean;
+  darkColor: string;
+  predictionTime: string;
+  timeToArrivalInSeconds: number;
+  destination: string;
+  stopId: string;
+  type: string;
+  systemTime: string;
+  vehicleId: string;
+  vehicleDistanceInFeet: number;
+  stopName: string;
+}

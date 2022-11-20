@@ -1,5 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AllRoutes, Route, RouteData, RouteDetail } from "../interfaces/IBus";
+import {
+  AllRoutes,
+  Route,
+  RouteBusses,
+  RouteData,
+  RouteDetail,
+  Vehicle,
+} from "../interfaces/IBus";
 import { ICourse } from "../interfaces/ICourse";
 import { ISearchResponse } from "../interfaces/ISearchResponse";
 
@@ -44,6 +51,14 @@ export const osuApi = createApi({
         return response.data;
       },
     }),
+
+    getRouteBusses: builder.query<Vehicle[], any>({
+      query: (route: string) => `bus/routes/${route}/vehicles`,
+      transformResponse: (response: RouteBusses) => {
+        console.log("REFETCH");
+        return response.data.vehicles;
+      },
+    }),
   }),
 });
 
@@ -52,4 +67,5 @@ export const {
   useGetClassesQuery,
   useGetRoutesQuery,
   useGetRouteDetailsQuery,
+  useGetRouteBussesQuery,
 } = osuApi;

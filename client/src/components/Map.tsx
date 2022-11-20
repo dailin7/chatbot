@@ -17,16 +17,16 @@ const Map = () => {
 
   const [selectedCenter, setSelectedCenter] = useState<{
     name: string;
-    latitude: number;
-    longitude: number;
+    lat: number;
+    lng: number;
   } | null>(null);
   const {
     data: geocodeData,
     isFetching: isGeocodeFetching,
     isError: isGeocodeError,
   } = useGetReverseGeocodeQuery({
-    lat: selectedCenter?.latitude || 0,
-    lng: selectedCenter?.longitude || 0,
+    lat: selectedCenter?.lat || 0,
+    lng: selectedCenter?.lng || 0,
   });
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Map = () => {
     getComponent("administrative_area_level_1") +
     " " +
     getComponent("postal_code");
-    
+
   return (
     <GoogleMap
       zoom={15}
@@ -89,8 +89,8 @@ const Map = () => {
             <InfoWindowF
               onCloseClick={() => setSelectedCenter(null)}
               position={{
-                lat: selectedCenter.latitude,
-                lng: selectedCenter.longitude,
+                lat: selectedCenter.lat,
+                lng: selectedCenter.lng,
               }}
             >
               {isGeocodeFetching ? (
@@ -110,6 +110,7 @@ const Map = () => {
                     className="font-normal text-[13px] text-[#1a73e8] hover:underline"
                     href={`https://www.google.com/maps/place/?q=place_id:${geocodeData.place_id}`}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     View on Google Maps
                   </a>
