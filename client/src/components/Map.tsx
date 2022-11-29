@@ -5,7 +5,7 @@ import { sampleBusDetails } from "../utils/sampleBusDetails";
 import { useGetRoutesQuery } from "../store/search.api";
 import { useGetReverseGeocodeQuery } from "../store/google.api";
 
-const Map = () => {
+const Map = ({routeStatus}:{routeStatus: boolean[]}) => {
   const {
     data: routesData,
     isFetching: isRoutesFetching,
@@ -70,7 +70,7 @@ const Map = () => {
     <GoogleMap
       zoom={15}
       center={center}
-      mapContainerClassName="w-full h-[90vh]"
+      mapContainerClassName="h-[70vh] w-[90vw]"
       clickableIcons={false}
     >
       {routesData?.map(({ code, name, color }) => (
@@ -112,7 +112,6 @@ const Map = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    View on Google Maps
                   </a>
                 </>
               )}
