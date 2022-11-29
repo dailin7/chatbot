@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 
 import "./styles/chatbot.css";
 import brutus from "./images/brutus.png";
-import BussesNew from "./pages/BussesNew";
 
 const App = () => {
   useEffect(() => {
@@ -38,7 +37,6 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/course/:courseId" element={<CourseDetails />} />
         <Route path="/bus" element={<Busses />} />
-        <Route path="/bus-new" element={<BussesNew />} />
       </Routes>
     </div>
   );

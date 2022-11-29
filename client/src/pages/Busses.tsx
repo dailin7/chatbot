@@ -25,6 +25,8 @@ import { BsCloudDownloadFill } from "react-icons/bs";
 import { positions } from '@mui/system';
 import { createTheme } from '@mui/material/styles';
 import heroDivider from "../images/hero-divider.svg";
+import Map from "../components/Map";
+
 
 const StyledTableRow = styled(TableRow)(() => ({
   '&:nth-of-type(odd)': {
@@ -81,12 +83,19 @@ const mc_info = [
 ];
 
 const Busses = () => {
+  // const routesState = [true, true, true, true, true, true, true];
+  // const updateRoutesState = (index:) => {
+  //   routesData[index] = !routesData[index];
+  // }
+  
   return (
     <div className = "h-full">
 
       <div className="static inline-flex">
-        <div className="relative h-[60vh] w-[70vw]">map</div>
-        <div className="relative h-[60vh] w-16[30vw]">
+        <div className="relative h-[70vh] w-[90vw]">
+          <Map routeStatus = {[]}/>
+        </div>
+        <div className="relative h-[70vh] w-[10vw]">
           <FormGroup className="relative">
             <FormControlLabel control={<Switch defaultChecked />} label="Label" />
             <FormControlLabel control={<Switch defaultChecked />} label="Label" />
@@ -97,14 +106,8 @@ const Busses = () => {
           </FormGroup>
         </div>
       </div>
-      {/* <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5335.596115402888!2d-83.0146018331603!3d39.99826267077555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388eb8c5837241%3A0x29e24cc55fefd423!2sOhio%20Union!5e0!3m2!1sen!2sus!4v1665525146289!5m2!1sen!2sus" 
-        width="100%" height="650" 
-        loading="lazy" 
-        referrerPolicy="no-referrer-when-downgrade">
-      </iframe> */}
-
-      <div className = "bus info">
+      
+      <div className = "relative w-[100vw]">
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
