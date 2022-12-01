@@ -23,7 +23,7 @@ rules:
   - intent: class_term
   - action: extract_class_term
   - action: utter_class_term
-
+  
 - rule: Return class instructor when it ask
   steps:
   - intent: class_instructor
@@ -41,7 +41,7 @@ rules:
   - action: extract_class_instructor
   - action: utter_class_instructor
 
-- rule: Return class building when it ask
+- rule: Return class time when it ask
   steps:
   - intent: class_building
   - action: building_form

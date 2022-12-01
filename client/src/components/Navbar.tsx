@@ -2,16 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaGraduationCap } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Squeeze as Hamburger } from "hamburger-react";
-import { useAppDispatch, useAppSelector } from "../hooks/useAppRedux";
-import { useLazyGetClassesQuery } from "../store/search.api";
-import { searchActions } from "../store/search.slice";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Navbar = () => {
-  const store = useAppSelector((store) => store);
-  const formData = useAppSelector(({ search }) => search);
-  const dispatch = useAppDispatch();
   const { width } = useWindowDimensions();
   const [isOpen, setOpen] = useState(false);
 

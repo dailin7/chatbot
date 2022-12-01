@@ -79,6 +79,7 @@ const Home = () => {
       searchTerm: tag,
       term: formData.term.value,
       campus: formData.campus.value,
+      academicCareer: formData.academicCareer.value,
       subject: formData.subject,
       catalogNum: formData.catalogNum,
     });
