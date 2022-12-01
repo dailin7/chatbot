@@ -21,6 +21,7 @@ import recuriment from "../images/recuriment.jpeg";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
 import Map from "../components/Map";
 import { useGetRoutesQuery } from "../store/search.api";
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 
 const StyledTableRow = styled(TableRow)(() => ({
   "&:nth-of-type(odd)": {
@@ -106,9 +107,10 @@ const Busses = () => {
   useEffect(() => {
     if (data) {
       setRoutes(
-        data.map(({ code, name }) => ({
+        data.map(({ code, name, color }) => ({
           code,
           name,
+          color,
           visible: true,
         }))
       );
@@ -123,7 +125,7 @@ const Busses = () => {
     setRoutes(
       routes.map((route) => {
         if (route.code === code) {
-          return { code: route.code, name: route.name, visible: !route.visible };
+          return { code: route.code, name: route.name, color: route.color, visible: !route.visible };
         }
         return route;
       })
@@ -137,21 +139,25 @@ const Busses = () => {
         <div className="relative h-[70vh] w-3/4">
           <Map routeStatus={routes} />
         </div>
-        <div className="relative h-[70vh]">
-          <FormGroup className="relative">
+        <div className="relative h-[70vh] flex justify-between items-center">
+          <FormGroup className="relative w-full">
             {routes.map((route) => (
-              <FormControlLabel
-                key={route.code}
-                control={<Switch defaultChecked />}
-                label={route.name}
-                onChange={() => toggleRoute(route.code)}
-              />
+              <div className="flex justify-between items-center my-4">
+                <DirectionsBusIcon className="rounded-2xl" fontSize="large" style={{color: `${route.color}`}}></DirectionsBusIcon>
+                <p className="text-md">{route.name} </p>
+                <FormControlLabel className=""
+                  key={route.code}
+                  control={<Switch defaultChecked />}
+                  label={""}
+                  onChange={() => toggleRoute(route.code)}
+                />
+              </div>
             ))}
           </FormGroup>
         </div>
       </div>
 
-      <div className="relative w-[100vw]">
+      <div className="relative ">
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
