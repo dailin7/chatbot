@@ -19,9 +19,10 @@ intents:
 - questions
 - welcome
 - class_number
-- class_term_selection1
-- class_term_selection2
-- class_term_selection3
+- class_term_selection
+- change_term
+#- class_term_selection2
+# - class_term_selection3
 
 
 responses:
@@ -71,58 +72,74 @@ session_config:
 slots:
   class:
     type: text
-    initial_value: CSE5914
+    #initial_value: CSE5914
     mappings:
     - type: from_entity
       entity: class
   course_title:
     type: text
-    initial_value: 'Capstone Design: Knowledge-Based Systems'
+    #initial_value: 'Capstone Design: Knowledge-Based Systems'
     mappings:
     - type: from_entity
       entity: course_title
   course_term:
     type: text
-    initial_value: Autumn 2022
+    #initial_value: Autumn 2022
     mappings:
     - type: from_entity
       entity: course_term
   course_building:
     type: text
-    initial_value: Journalism Bldg 304
+    #initial_value: Journalism Bldg 304
     mappings:
     - type: from_entity
       entity: course_building
   course_campus:
     type: text
-    initial_value: Columbus
+    #initial_value: Columbus
     mappings:
     - type: from_entity
       entity: course_campus
   course_description:
     type: text
-    initial_value: "Capstone design project; conceptual and technical design; theory and practice of knowledge-based systems; teamwork, written and oral communication skills.\nPrereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing."
+    #initial_value: "Capstone design project; conceptual and technical design; theory and practice of knowledge-based systems; teamwork, written and oral communication skills.\nPrereq: 3521 or 5521, and 2501 or Philos 1338, and CSE 3901 or 3902 or 3903, and second writing course; or Grad standing."
     mappings:
     - type: from_entity
       entity: course_description
   course_instructor:
     type: text
-    initial_value: Stanley J Vernier
+    #initial_value: Stanley J Vernier
     mappings:
     - type: from_entity
       entity: course_instructor
   course_instructionMode:
     type: text
-    initial_value: In Person
+    #initial_value: In Person
     mappings:
     - type: from_entity
       entity: course_instructionMode
   result:
     type: text
-    initial_value: CSS 5914 is not a valid class
+    #initial_value: CSS 5914 is not a valid class
     mappings:
     - type: from_entity
       entity: result
+
+forms:
+  instructor_form:
+    required_slots:
+        - class
+        - course_term
+  
+  building_form:
+    required_slots:
+        - class
+        - course_term
+  
+  campus_form:
+    required_slots:
+        - class
+        - course_term
 
 entities:
 - class

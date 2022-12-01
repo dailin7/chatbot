@@ -133,6 +133,8 @@ nlu:
     - [CSE 2501](class) building 
     - [FRENCH 2101.01](class) building 
     - where does the [CHEM 1100](class) take?
+    - [autumn 2022](course_term) building [math 1151](class)
+    - building [spring 2023](course_term) [cse 3341](class)
 
 - intent: class_campus
   examples: |
@@ -142,6 +144,8 @@ nlu:
     - campus of [CHEM 1200](class)
     - campus [RELSTDS 2370](class)
     - [DEABLST 5191](class) campus
+    - [autumn 2022](course_term) campus [math 1151](class)
+    - campus [spring 2023](course_term) [cse 3341](class)
 
 - intent: class_description
   examples: |
@@ -166,6 +170,8 @@ nlu:
     - list of [WGSST 1110](class) teachers
     - professor of [DSABLST 5191](class)
     - [DANCE 1101](class) professor
+    - [autumn 2022](course_term) instructor [math 1151](class)
+    - instructor [spring 2023](course_term) [cse 3341](class)
 
 - intent: class_number
   examples: |
@@ -182,7 +188,7 @@ nlu:
 
 - intent: welcome
 
-- intent: class_term_selection1
+- intent: class_term_selection
   examples: |
     - [summer 2022](course_term)
     - [autumn 2022](course_term)
@@ -197,37 +203,12 @@ nlu:
     - [2022 aut](course_term)
     - [2023 spr](course_term)
 
-- intent: class_term_selection2
+- intent: change_term
   examples: |
-    - [summer 2022](course_term)
-    - [autumn 2022](course_term)
-    - [sum 2022](course_term)
-    - [spring 2023](course_term)
-    - [aut 2022](course_term)
-    - [spr 2023](course_term)
-    - [2022 summer](course_term)
-    - [2022 autumn](course_term)
-    - [2023 spring](course_term)
-    - [2022 sum](course_term)
-    - [2022 aut](course_term)
-    - [2023 spr](course_term)
-
-- intent: class_term_selection3
-  examples: |
-    - [summer 2022](course_term)
-    - [autumn 2022](course_term)
-    - [sum 2022](course_term)
-    - [spring 2023](course_term)
-    - [aut 2022](course_term)
-    - [spr 2023](course_term)
-    - [2022 summer](course_term)
-    - [2022 autumn](course_term)
-    - [2023 spring](course_term)
-    - [2022 sum](course_term)
-    - [2022 aut](course_term)
-    - [2023 spr](course_term)
-   
-
+    - change semester to [spring 2023](course_term)
+    - I want to change term to [autumn 2022](course_term)
+    - change term to [summer 2022](course_term)
+    - I want to change semester to [autumn 2022](course_term)
 
 # - intent: bus_delayed
 #   examples: |
@@ -241,17 +222,17 @@ nlu:
 #     - Does NE delay?
     
 
-# - intent: bus_stop
-#   examples: |
-#     - Where is the bus stop nearby?
-#     - Where can I find a bus stop?
-#     - Where is the nearest bus stop?
-#     - Where can I take a bus?
-#     - Bus stop?
-#     - Bus stop
-#     - busstop
-#     - Where does the bus stop?
-#     - What is the name of the bus stop?
+- intent: bus_stop
+  examples: |
+    - Where is the bus stop nearby?
+    - Where can I find a bus stop?
+    - Where is the nearest bus stop?
+    - Where can I take a bus?
+    - Bus stop?
+    - Bus stop
+    - busstop
+    - Where does the bus stop?
+    - What is the name of the bus stop?
 
 
 # - intent: bus_direction
