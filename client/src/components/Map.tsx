@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { GoogleMap, InfoWindowF, useLoadScript } from "@react-google-maps/api";
 import BusPath from "./BusPath";
-import { sampleBusDetails } from "../utils/sampleBusDetails";
 import { useGetRoutesQuery } from "../store/search.api";
 import { useGetReverseGeocodeQuery } from "../store/google.api";
 
-const Map = ({routeStatus}:{routeStatus: boolean[]}) => {
+const Map = ({ routeStatus }: { routeStatus: any[] }) => {
   const {
     data: routesData,
     isFetching: isRoutesFetching,
@@ -66,18 +65,25 @@ const Map = ({routeStatus}:{routeStatus: boolean[]}) => {
     " " +
     getComponent("postal_code");
 
+  function isVisible(code: string) {
+    const route = routeStatus.find((route) => route.code === code);
+    return route.visible;
+  }
+
+  const routes = routesData?.filter(({ code }) => isVisible(code));
+
   return (
     <GoogleMap
-      zoom={15}
+      zoom={13}
       center={center}
-      mapContainerClassName="h-[70vh] w-[90vw]"
+      mapContainerClassName="h-[70vh] w-full"
       clickableIcons={false}
     >
-      {routesData?.map(({ code, name, color }) => (
+      {routes?.map(({ code, name, color }) => (
         <BusPath
           key={code}
           code={code}
-          name={name}
+          // name={name}
           color={color}
           setSelectedCenter={setSelectedCenter}
         />
@@ -111,8 +117,7 @@ const Map = ({routeStatus}:{routeStatus: boolean[]}) => {
                     href={`https://www.google.com/maps/place/?q=place_id:${geocodeData.place_id}`}
                     target="_blank"
                     rel="noreferrer"
-                  >
-                  </a>
+                  >View on Google Maps</a>
                 </>
               )}
             </InfoWindowF>

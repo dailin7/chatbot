@@ -1,21 +1,18 @@
 import React, { Dispatch } from "react";
 import { decode } from "@googlemaps/polyline-codec";
-import { MarkerF, PolylineF, InfoWindowF } from "@react-google-maps/api";
+import { MarkerF, PolylineF } from "@react-google-maps/api";
 
 import {
   useGetRouteBussesQuery,
   useGetRouteDetailsQuery,
 } from "../store/search.api";
-import busIcon from "../images/busIcon.svg";
 
 const BusPath = ({
   code,
-  name,
   color,
   setSelectedCenter,
 }: {
   code: string;
-  name: string;
   color: string;
   setSelectedCenter: Dispatch<any>;
 }) => {
@@ -30,7 +27,7 @@ const BusPath = ({
   });
 
   if (isDetailsFetching || isDetailsError || !details) return <div></div>;
-
+  
   return (
     <>
       {details.patterns.map(({ id, encodedPolyline }) => (
@@ -89,4 +86,4 @@ const BusPath = ({
   );
 };
 
-export default BusPath;
+export default React.memo(BusPath);

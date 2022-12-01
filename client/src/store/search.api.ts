@@ -55,7 +55,6 @@ export const osuApi = createApi({
     getRouteBusses: builder.query<Vehicle[], any>({
       query: (route: string) => `bus/routes/${route}/vehicles`,
       transformResponse: (response: RouteBusses) => {
-        console.log("REFETCH");
         return response.data.vehicles;
       },
     }),
