@@ -21,6 +21,7 @@ import recuriment from "../images/recuriment.jpeg";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
 import Map from "../components/Map";
 import { useGetRoutesQuery } from "../store/search.api";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import HeroBg from "../components/HeroBg";
 
 const StyledTableRow = styled(TableRow)(() => ({
@@ -107,9 +108,10 @@ const Busses = () => {
   useEffect(() => {
     if (data) {
       setRoutes(
-        data.map(({ code, name }) => ({
+        data.map(({ code, name, color }) => ({
           code,
           name,
+          color,
           visible: true,
         }))
       );
@@ -127,6 +129,7 @@ const Busses = () => {
           return {
             code: route.code,
             name: route.name,
+            color: route.color,
             visible: !route.visible,
           };
         }
@@ -139,19 +142,30 @@ const Busses = () => {
     <>
       <div className="max-w-[1536px] w-[90%] mx-auto relative z-10">
         <p className="text-3xl font-bold my-6">Live Bus Map</p>
-        <div className="flex gap-6 mb-4">
+        <div className="flex justify-between gap-6 mb-4">
           <div className="relative h-[70vh] w-3/4 shadow-md">
             <Map routeStatus={routes} />
           </div>
-          <div className="relative h-[70vh]">
-            <FormGroup className="relative">
+          <div className="relative h-[70vh] w-1/4">
+            <FormGroup className="relative w-full">
               {routes.map((route) => (
-                <FormControlLabel
-                  key={route.code}
-                  control={<Switch defaultChecked />}
-                  label={route.name}
-                  onChange={() => toggleRoute(route.code)}
-                />
+                <div className="flex justify-between items-center my-4">
+                  <div className="flex items-center gap-2">
+                    <DirectionsBusIcon
+                      className="rounded-2xl"
+                      fontSize="large"
+                      style={{ color: `${route.color}` }}
+                    ></DirectionsBusIcon>
+                    <p>{route.name} </p>
+                  </div>
+                  <FormControlLabel
+                    className=""
+                    key={route.code}
+                    control={<Switch defaultChecked />}
+                    label={""}
+                    onChange={() => toggleRoute(route.code)}
+                  />
+                </div>
               ))}
             </FormGroup>
           </div>
@@ -372,8 +386,8 @@ const Busses = () => {
                 Earn up to $16 an hour as a student bus driver for Ohio State’s
                 Campus Area Bus Service (CABS). We will train you to drive!{" "}
                 <a className="text-scarlet" href="https://ttm.osu.edu/jobs">
-                  Apply{" "}
-                </a>{" "}
+                  Apply
+                </a>
                 today.
               </Typography>
             </CardContent>
