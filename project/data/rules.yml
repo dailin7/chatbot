@@ -30,6 +30,12 @@ rules:
   - action: extract_class_instructor
   - action: utter_class_instructor
 
+- rule: Return class time when it ask
+  steps:
+  - intent: class_time
+  - action: extract_class_time
+  - action: utter_class_time
+
 # - rule: Ask which term when ask about the instructor
 #   steps:
 #   - intent: class_instructor

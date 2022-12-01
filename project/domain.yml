@@ -11,6 +11,7 @@ intents:
 - class_instructor
 - class_term
 - class_title
+- class_time
 - deny
 - goodbye
 - greet
@@ -54,6 +55,8 @@ responses:
   - text: "Hello! Welcome to Buckeye Chatbot!!! At here, you can ask about the class you would like to know. You can ask about title, instructor, building, campus, terms, and time spot!"
   utter_class_number:
   - text: "You can search for: title, term, building, instructor, campus."
+  utter_class_time:
+  - text: "Class time:{result}."
   # utter_term_ask:
   # - text: Which term do you want to search?(Spring 2023, Autumn 2022, Summer 2022)
   
@@ -112,6 +115,12 @@ slots:
     mappings:
     - type: from_entity
       entity: course_instructionMode
+  course_time:
+    type: text
+    initial_value: "5:35 pm to 6:55 pm"
+    mappings:
+    - type: from_entity
+      entity: course_time
   result:
     type: text
     initial_value: CSS 5914 is not a valid class
@@ -128,6 +137,7 @@ entities:
 - course_description
 - course_instructor
 - course_instructionMode
+- course_time
 - result
 
 actions:
@@ -143,5 +153,7 @@ actions:
 - extract_class_campus
 - utter_class_campus
 - utter_class_number
+- extract_class_time
+- utter_class_time
 # - utter_term_ask
 

@@ -177,6 +177,33 @@ class extract_class_campus(Action):
             result = str(class_name) + " is not a valid class"
         return  [SlotSet("result", result)]
 
+class extract_class_time(Action):
+    def name(self): 
+        return "extract_class_time" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        # upper_class_name = class_name.upper()
+        new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        output_1 = data["data"]["courses"][0]["sections"][0]['meetings'][0]['startTime']
+        output_2 = data["data"]["courses"][0]["sections"][0]['meetings'][0]['endTime']
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in upper_one and catalogNumber in upper_one:
+            if output_1 != None:
+                print("The meeting time of class " + class_name + " is " + output_1 + " to " + output_2)
+                result = "The meeting time of class " + class_name + " is " + output_1 + " to " + output_2
+            else:
+                print("The meeting time of class" + class_name + " is not available")
+                result = "The meeting time of class" + class_name + " is not available"
+        else:
+            print(str(class_name) + " is not a valid class")
+            result = str(class_name) + " is not a valid class"
+        return  [SlotSet("result", result)]
 
 
 # from typing import Any, Text, Dict, List

@@ -127,7 +127,7 @@ nlu:
 - intent: class_building
   examples: |
     - [CSE 1224](class) takes in which building
-    - location of class [BIOMEDE 2000](classs)
+    - location of class [BIOMEDE 2000](class)
     - building of [DANCE 1101](class)
     - where is the class [DANCE 2112](class)?
     - [CSE 2501](class) building 
@@ -179,6 +179,11 @@ nlu:
     - [ENGR 5797.04](class)
     - [ENTMLGY 7920](class)
     - [MUSIC 3425](class)
+
+- intent: class_time
+  examples: |
+    - what time is [CSE 5914](class)?
+    - when is [CSE 5914](class)?
 
 - intent: welcome
 
