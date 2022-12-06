@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { api } from "./search.api";
-import searchReducer from "./search.slice"
+import { googleApi } from "./google.api";
+import { osuApi } from "./search.api";
+import searchReducer from "./search.slice";
 
 const store = configureStore({
   reducer: {
     search: searchReducer,
-    [api.reducerPath]: api.reducer,
+    [osuApi.reducerPath]: osuApi.reducer,
+    [googleApi.reducerPath]: googleApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware().concat([osuApi.middleware, googleApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

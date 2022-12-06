@@ -27,53 +27,53 @@ rules:
 - rule: Return class instructor when it ask
   steps:
   - intent: class_instructor
+  - action: instructor_form
+  - active_loop: instructor_form
+
+- rule: instructor2 submit form
+  condition:
+  - active_loop: instructor_form
+  steps:
+  - action: instructor_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: class, course_term
   - action: extract_class_instructor
   - action: utter_class_instructor
 
-# - rule: Ask which term when ask about the instructor
-#   steps:
-#   - intent: class_instructor
-#   - action: utter_term_ask
-
-# - rule: Return class instructor when it ask
-#   steps:
-#   - intent: class_term_selection
-#   - action: extract_class_instructor
-#   - action: utter_class_instructor
-
-- rule: Return class building when it ask
+- rule: Return class time when it ask
   steps:
   - intent: class_building
+  - action: building_form
+  - active_loop: building_form
+
+- rule: building2 submit form
+  condition:
+  - active_loop: building_form
+  steps:
+  - action: building_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: class, course_term
   - action: extract_class_building
   - action: utter_class_building
 
-# - rule: Ask which term when ask about the building
-#   steps:
-#   - intent: class_building
-#   - action: utter_term_ask
-
-# - rule: Return class building when receive term
-#   steps:
-#   - intent: class_term_selection
-#   - action: extract_class_building
-#   - action: utter_class_building
-
-- rule: Return class term when it ask
+- rule: Return class campus when it ask
   steps:
   - intent: class_campus
+  - action: campus_form
+  - active_loop: campus_form
+
+- rule: campus2 submit form
+  condition:
+  - active_loop: campus_form
+  steps:
+  - action: campus_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: class, course_term
   - action: extract_class_campus
   - action: utter_class_campus
-
-# - rule: Ask which term when ask about campus
-#   steps:
-#   - intent: class_campus
-#   - action: utter_term_ask
-
-# - rule: Return class campus when receive term
-#   steps:
-#   - intent: class_term_selection
-#   - action: extract_class_campus
-#   - action: utter_class_campus
 
 - rule: great first
   conversation_start: true

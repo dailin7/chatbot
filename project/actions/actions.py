@@ -15,6 +15,12 @@ from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 import requests
 import json
+from typing import Text, List, Any, Dict
+
+from rasa_sdk import Tracker, FormValidationAction
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
+
 
 class FetchProfileAction(Action):
 
@@ -67,22 +73,21 @@ class extract_class_instructor(Action):
         new_name = class_name.replace(' ', '%20')
         upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
-        print(url)
         data = requests.get(url).json()
-        dic = {}
+        set_inst = set()
         for i in data["data"]["courses"]:
-            if i["course"]["term"] == class_term and i["sections"][0]["meetings"][0]["instructors"][0]["displayName"] != None:
+            from_web = str(i["course"]["term"])
+            if from_web.upper() == class_term.upper():
                 output = i["sections"][0]["meetings"][0]["instructors"][0]["displayName"]
-                if output in dic:
-                    dic[output] += 1
-                else:
-                    dic[output] = 1
-        lis = list(dic.keys())
-        
+                if output not in set_inst and output is not None:
+                    set_inst.add(output)
+            
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            result =class_name + " instructors are:  " + ', '.join(lis)
+            lis = list(set_inst)
+            result =class_name + " instructor of " + class_term + " are:  " + ', '.join(lis)
+            print(result)
         else:
             print(class_name + " is not a valid class")
             result = class_name + " is not a valid class"
@@ -91,7 +96,6 @@ class extract_class_instructor(Action):
 class extract_class_term(Action):
     def name(self): 
         return "extract_class_term" 
-
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
@@ -119,6 +123,7 @@ class extract_class_building(Action):
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
+        class_term = tracker.get_slot('course_term')
         # upper_class_name = class_name.upper()
         class_term = tracker.get_slot('course_term')
         new_name = class_name.replace(' ', '%20')
@@ -126,29 +131,75 @@ class extract_class_building(Action):
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
-        dic = {}
+        set_inst = set()
         for i in data["data"]["courses"]:
-            if i["course"]["term"] == class_term and i["sections"][0]["meetings"][0]["buildingDescription"] != None:
-                output = i["sections"][0]["meetings"][0]["buildingDescription"]
-                if output in dic:
-                    dic[output] += 1
-                else:
-                    dic[output] = 1
-        lis = list(dic.keys())
-        # output = data['data']['courses'][0]['sections'][0]['meetings'][0]['buildingDescription']
+            from_web = str(i["course"]["term"])
+            if from_web.upper() == class_term.upper():
+                for j in i["sections"]:
+                    output = j["meetings"][0]["buildingDescription"]
+                    if output not in set_inst and output is not None:
+                        set_inst.add(output)
+            
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            print("The building of class " + class_name + " are " + ', '.join(lis))
-            result = "The building of class " + class_name + " are " + ', '.join(lis)
+            lis = list(set_inst)
+            result =class_name + " building of " + class_term + " are:  " + ', '.join(lis)
+            print(result)
         else:
-            print(str(class_name) + " is not a valid class")
-            result = str(class_name) + " is not a valid class"
+            print(class_name + " is not a valid class")
+            result = class_name + " is not a valid class"
         return  [SlotSet("result", result)]
 
 class extract_class_campus(Action):
     def name(self): 
         return "extract_class_campus" 
+
+    def run(self, dispatcher, tracker, domain): 
+        class_name = tracker.get_slot('class')
+        class_term = tracker.get_slot('course_term')
+        # upper_class_name = class_name.upper()
+        new_name = class_name.replace(' ', '%20')
+        upper_one = class_name.upper()
+        url = "https://content.osu.edu/v2/classes/search?q=" + new_name
+        print(url)
+        data = requests.get(url).json()
+        set_inst = set()
+        for i in data["data"]["courses"]:
+            from_web = str(i["course"]["term"])
+            if from_web.upper() == class_term.upper():
+                output = i["course"]["campus"]
+                if output not in set_inst and output is not None:
+                    set_inst.add(output)
+            
+        subject = data["data"]["courses"][0]["course"]["subject"]
+        catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
+        if subject in upper_one and catalogNumber in upper_one:
+            lis = list(set_inst)
+            result =class_name + " campus of " + class_term +" are:  " + ', '.join(lis)
+            print(result)
+        else:
+            print(class_name + " is not a valid class")
+            result = class_name + " is not a valid class"
+        return  [SlotSet("result", result)]
+
+class extract_all_route(Action):
+    def name(self):
+        return "extract_all_route"
+
+    def run(self, dispatcher, tracker, domain):
+        url = "https://content.osu.edu/v2/bus/routes"
+        data = requests.get(url).json()
+        route = []
+        for i in data["data"]["routes"]:
+            if i["code"] not in route:
+                route.append(i["code"])
+        routes = ", ".join(route)
+        result = "The routes in the campus are" + routes
+        return [SlotSet("result", result)]
+class extract_class_time(Action):
+    def name(self): 
+        return "extract_class_time" 
 
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
@@ -158,16 +209,17 @@ class extract_class_campus(Action):
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
-        output = data["data"]["courses"][0]["sections"][0]["campus"]
+        output_1 = data["data"]["courses"][0]["sections"][0]['meetings'][0]['startTime']
+        output_2 = data["data"]["courses"][0]["sections"][0]['meetings'][0]['endTime']
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            if output != None:
-                print("The campus of class " + class_name + " is " + output)
-                result = "The campus of class " + class_name + " is " + output
+            if output_1 != None:
+                print("The meeting time of class " + class_name + " is " + output_1 + " to " + output_2)
+                result = "The meeting time of class " + class_name + " is " + output_1 + " to " + output_2
             else:
-                print("The campus of class " + class_name + " is not available")
-                result = "The campus of class " + class_name + " is not available"
+                print("The meeting time of class" + class_name + " is not available")
+                result = "The meeting time of class" + class_name + " is not available"
         else:
             print(str(class_name) + " is not a valid class")
             result = str(class_name) + " is not a valid class"

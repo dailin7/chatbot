@@ -35,7 +35,7 @@ stories:
   - action: extract_class_title
   - action: utter_class_title
 
-- story: class title, term, and building search
+- story: class title and term search
   steps:
   - intent: class_title
   - action: extract_class_title
@@ -46,54 +46,34 @@ stories:
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
-  - intent: class_building
-  # - action: utter_term_ask
-  # - intent: class_term_selection
-  - action: extract_class_building
-  - action: utter_class_building
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
   - intent: deny
   - action: utter_goodbye
 
-- story: class campus search
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: class_campus
-  # - action: utter_term_ask
-  # - intent: class_term_selection
-  - action: extract_class_campus
-  - action: utter_class_campus
-  - intent: mood_great
-  - action: utter_happy
-  - action: utter_question
-  - intent: deny
-  - action: utter_goodbye
 
 - story: class instructor and description search
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: class_instructor
-  # - action: utter_term_ask
-  # - intent: class_term_selection
-  - action: extract_class_instructor
-  - action: utter_class_instructor
+#  - intent: class_instructor
+#  - action: instructor_form
+#  - active_loop: instructor_form
+#  - action: extract_class_instructor
+#  - action: utter_class_instructor
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
   - intent: questions
   - action: utter_still_question
-  # - intent: class_description
-  # - action: extract_class_description
   - intent: mood_great
   - action: utter_happy
   - action: utter_question
   - intent: deny
   - action: utter_goodbye
 
+<<<<<<< HEAD
 - story: bus delay bus stop and bus direction
   steps: 
   - intent: greet
@@ -112,6 +92,40 @@ stories:
   - action: utter_question
   - intent: deny
   - action: utter_goodbye
+=======
+#- story: instructor
+#  steps:
+#  - intent: class_instructor
+#  - action: instructor_form
+#  - active_loop: instructor_form
+#  - action: extract_class_instructor
+#  - action: utter_class_instructor
+
+# - story: bus delay bus stop and bus direction
+#   steps: 
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: bus_delayed
+#   - action: check_bus_delayed
+#   - intent: mood_great
+#   - action: utter_happy
+#   - action: utter_question
+#   - intent: questions
+#   - action: utter_still_question
+#   - intent: bus_stop
+#   - action: list_bus_stop
+#   - intent: mood_great
+#   - action: utter_happy
+#   - action: utter_question
+#   - intent: questions
+#   - intent: bus_direction
+#   - action: extract_bus_direction
+#   - intent: mood_great
+#   - action: utter_happy
+#   - action: utter_question
+#   - intent: deny
+#   - action: utter_goodbye
+>>>>>>> a80c3f0ff4cc4ada8fb5c5be0e68a8dd8b7fbc34
 
 
 - story: all_route
@@ -170,34 +184,3 @@ stories:
   - slot_was_set:
     - course_title: Vol & HR Mgmt
   - intent: deny
-
-- story: instructor
-  steps:
-  - intent: class_instructor
-  # - action: utter_term_ask
-  # - intent: class_term_selection
-    entities:
-    - class: Spring 2022
-  - action: extract_class_instructor
-  - action: utter_class_instructor
-
-- story: building
-  steps:
-  - intent: class_building
-  # - action: utter_term_ask
-  # - intent: class_term_selection
-    entities:
-    - class: Spring 2022
-  - action: extract_class_building
-  - action: utter_class_building
-
-- story: campus
-  steps:
-  - intent: class_campus
-  # - action: utter_term_ask
-  # - intent: class_term_selection
-    entities:
-    - class: Spring 2022
-  - action: extract_class_campus
-  - action: utter_class_campus
-
