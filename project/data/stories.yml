@@ -94,31 +94,43 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-# - story: bus delay bus stop and bus direction
-#   steps: 
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: bus_delayed
-#   - action: check_bus_delayed
-#   - intent: mood_great
-#   - action: utter_happy
-#   - action: utter_question
-#   - intent: questions
-#   - action: utter_still_question
-#   - intent: bus_stop
-#   - action: list_bus_stop
-#   - intent: mood_great
-#   - action: utter_happy
-#   - action: utter_question
-#   - intent: questions
-#   - intent: bus_direction
-#   - action: extract_bus_direction
-#   - intent: mood_great
-#   - action: utter_happy
-#   - action: utter_question
-#   - intent: deny
-#   - action: utter_goodbye
+- story: bus delay bus stop and bus direction
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: school_bus
+  - action: extract_all_route
+  - action: utter_all_route
+  #- intent: bus_stop
+  #- action: extract_bus_stop
+  #- action: utter_bus_stops
+  # - intent: current_buses
+  # - action: extract_all_bus_in_a_route
+  # - action: utter_all_buses_in_a_route
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_question
+  - intent: deny
+  - action: utter_goodbye
 
+
+- story: all_route
+  steps:
+  - intent: school_bus
+  - action: extract_all_route
+  - action: utter_all_route
+
+#- story: all stops
+  #steps:
+  #- intent: bus_stop
+  #- action: extract_bus_stop
+  #- action: utter_bus_stops
+
+#- story: all buses in a specific route
+  #steps:
+  #- intent: current_buses
+  #- action: extract_all_bus_in_a_route
+  #- action: utter_all_buses_in_a_route
   
 
 - story: interactive_story_1

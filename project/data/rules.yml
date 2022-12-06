@@ -85,3 +85,43 @@ rules:
   steps:
   - intent: class_number
   - action: utter_class_number
+
+- rule: bus_route
+  steps:
+  - intent: school_bus
+  - action: extract_all_route
+  - action: utter_all_route
+
+- rule: extract bus stop for a route
+  steps: 
+  - intent: bus_stop
+  - action: bus_stop_form
+  - active_loop: bus_stop_form
+
+- rule: bus stop2 sumbit form
+  condition:
+  - active_loop: bus_stop_form
+  steps:
+  - action: bus_stop_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: route
+  - action: extract_bus_stop
+  - action: utter_bus_stops
+
+- rule: extract current buses for a route
+  steps: 
+  - intent: current_buses
+  - action: current_bus_form
+  - active_loop: current_bus_form
+
+- rule: bus stop2 sumbit form
+  condition:
+  - active_loop: current_bus_form
+  steps:
+  - action: current_bus_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: route
+  - action: extract_all_bus_in_a_route
+  - action: utter_all_buses_in_a_route

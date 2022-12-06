@@ -127,7 +127,7 @@ nlu:
 - intent: class_building
   examples: |
     - [CSE 1224](class) takes in which building
-    - location of class [BIOMEDE 2000](classs)
+    - location of class [BIOMEDE 2000](class)
     - building of [DANCE 1101](class)
     - where is the class [DANCE 2112](class)?
     - [CSE 2501](class) building 
@@ -213,18 +213,45 @@ nlu:
 #     - Does the bus delay?
 #     - Does NE delay?
     
+- intent: school_bus
+  examples: |
+    - Which buses do we have?
+    - school buses?
+    - How many buses does OSU have?
+    - Which buses does OSU have?
+    - OSU bus
+    - OSU buses
+    - bus OSU
 
-# - intent: bus_stop
-#   examples: |
-#     - Where is the bus stop nearby?
-#     - Where can I find a bus stop?
-#     - Where is the nearest bus stop?
-#     - Where can I take a bus?
-#     - Bus stop?
-#     - Bus stop
-#     - busstop
-#     - Where does the bus stop?
-#     - What is the name of the bus stop?
+- intent: bus_route
+  examples: |
+    - BE
+    - CC
+    - CLS
+    - ER
+    - MC
+    - ACK
+    - MM
+
+- intent: bus_stop
+  examples: |
+    - Where is the bus stop nearby?
+    - Where can I find a bus stop?
+    - Where is the nearest bus stop?
+    - Where can I take a bus?
+    - Bus stop?
+    - Bus stop
+    - busstop
+    - Where does the bus stop?
+    - What is the name of the bus stop?
+
+- intent: current_buses
+  examples: |
+    - list all current buses
+    - current [BE](route) buses
+    - how many buese currently have?
+    - list all current [CLS](route) buses
+    - current buses
 
 
 # - intent: bus_direction

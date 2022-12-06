@@ -96,21 +96,17 @@ class extract_class_term(Action):
     def run(self, dispatcher, tracker, domain): 
         class_name = tracker.get_slot('class')
         # upper_class_name = class_name.upper()
+        class_term = tracker.get_slot('course_term')
         new_name = class_name.replace(' ', '%20')
         upper_one = class_name.upper()
         url = "https://content.osu.edu/v2/classes/search?q=" + new_name
         print(url)
         data = requests.get(url).json()
-        output = data['data']['courses'][0]["course"]["term"]
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
         if subject in upper_one and catalogNumber in upper_one:
-            if output != None:
-                print("The term of class " + class_name + " is " + output)
-                result = "The term of class " + class_name + " is " + output
-            else:
-                print("The term of class " + class_name + " is not available")
-                result = "The term of class " + class_name + " is not available"
+            print("The term of class " + class_name + " is " + class_term)
+            result = "The term of class " + class_name + " is " + class_term
         else:
             print(class_name + " is not a valid class")
             result = class_name + " is not a valid class"
@@ -178,7 +174,50 @@ class extract_class_campus(Action):
         return  [SlotSet("result", result)]
 
 
+class extract_all_route(Action):
+    def name(self):
+        return "extract_all_route"
 
+    def run(self, dispatcher, tracker, domain):
+        url = "https://content.osu.edu/v2/bus/routes"
+        data = requests.get(url).json()
+        route = []
+        for i in data["data"]["routes"]:
+            if i["code"] not in route:
+                route.append(i["code"])
+        routes = ", ".join(route)
+        result = "The routes in the campus are " + str(routes)
+        print(result)
+        return [SlotSet("result", result)]
+
+class extract_bus_stop(Action):
+    def name(self):
+        return "extract_bus_stop"
+
+    def run(self, dispatcher, tracker, domain):
+        route_name = tracker.get_slot('route')
+        url = "https://content.osu.edu/v2/bus/routes/" + str(route_name)
+        data = requests.get(url).json()
+        stops = []
+        for i in data["data"]["stops"]:
+            if i["name"] not in stops:
+                stops.append(i["name"])
+        result = "The stops of route " + str(route_name) + " are: " + ", ".join(stops)
+        return [SlotSet("result", result)]
+
+class extract_all_bus_in_a_route(Action):
+    def name(self):
+        return "extract_all_bus_in_a_route"
+
+    def run(self, dispatcher, tracker, domain):
+        route_name = tracker.get_slot('route')
+        url = "https://content.osu.edu/v2/bus/routes/" + route_name + "/vehicles"
+        data = requests.get(url).json()
+        buses_no = 0
+        for i in data["data"]["vehicles"]:
+            buses_no += 1
+        result = "There are " + str(buses_no) + " buses in route " + route_name
+        return [SlotSet("result", result)]
 # from typing import Any, Text, Dict, List
 #
 #

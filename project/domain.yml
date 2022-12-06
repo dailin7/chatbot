@@ -4,7 +4,6 @@ intents:
 - bot_challenge
 - bus_delayed
 - bus_direction
-- bus_stop
 - class_building
 - class_campus
 - class_description
@@ -20,7 +19,10 @@ intents:
 - welcome
 - class_number
 # - class_term_selection
-
+- school_bus #user want to know how many buses in school
+- bus_route #name of bus
+- bus_stop
+- current_buses
 
 responses:
   utter_greet:
@@ -56,7 +58,13 @@ responses:
   - text: "You can search for: title, term, building, instructor, campus."
   # utter_term_ask:
   # - text: Which term do you want to search?(Spring 2023, Autumn 2022, Summer 2022)
-  
+  utter_all_route:
+  - text: "OSU bus routes have: {result}."
+  utter_bus_stops:
+  - text: "Bus stops: {result}."
+  utter_all_buses_in_a_route:
+  - text: "All buses: {result}."
+
 
 
 session_config:
@@ -118,6 +126,20 @@ slots:
     mappings:
     - type: from_entity
       entity: result
+  route:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: route
+
+forms:
+  bus_stop_form:
+    required_slots:
+        - route
+  
+  current_bus_form:
+    required_slots:
+        - route
 
 entities:
 - class
@@ -129,6 +151,7 @@ entities:
 - course_instructor
 - course_instructionMode
 - result
+- route
 
 actions:
 - extract_class_title
@@ -144,4 +167,9 @@ actions:
 - utter_class_campus
 - utter_class_number
 # - utter_term_ask
-
+- extract_all_route
+- extract_bus_stop
+- extract_all_bus_in_a_route
+- utter_all_route
+- utter_bus_stops
+- utter_all_buses_in_a_route
