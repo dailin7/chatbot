@@ -238,13 +238,13 @@ nlu:
 
 - intent: bus_route
   examples: |
-    - BE
-    - CC
-    - CLS
-    - ER
-    - MC
-    - ACK
-    - MM
+    - [BE](route)
+    - [CC](route)
+    - [CLS](route)
+    - [ER](route)
+    - [MC](route)
+    - [ACK](route)
+    - [MM](route)
 
 - intent: bus_stop
   examples: |

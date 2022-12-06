@@ -155,7 +155,6 @@ forms:
     required_slots:
         - route
 
-forms:
   instructor_form:
     required_slots:
         - class

@@ -74,7 +74,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-<<<<<<< HEAD
 - story: bus delay bus stop and bus direction
   steps: 
   - intent: greet
@@ -93,7 +92,6 @@ stories:
   - action: utter_question
   - intent: deny
   - action: utter_goodbye
-=======
 #- story: instructor
 #  steps:
 #  - intent: class_instructor
@@ -126,7 +124,6 @@ stories:
 #   - action: utter_question
 #   - intent: deny
 #   - action: utter_goodbye
->>>>>>> a80c3f0ff4cc4ada8fb5c5be0e68a8dd8b7fbc34
 
 
 - story: all_route
