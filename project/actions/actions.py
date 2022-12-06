@@ -47,7 +47,7 @@ class extract_class_title(Action):
         output = data["data"]["courses"][0]["course"]["shortDescription"]
         subject = data["data"]["courses"][0]["course"]["subject"]
         catalogNumber = data["data"]["courses"][0]["course"]["catalogNumber"]
-        if subject in class_name and catalogNumber in upper_one:
+        if subject in upper_one and catalogNumber in upper_one:
             if output != None:
                 print("The title of class " + str(class_name) + " is " + str(output))
                 result = "The title of class " + str(class_name) + " is " + str(output)
